@@ -9,7 +9,7 @@ public class DepositBox : MonoBehaviour, IBookwormParent
 
     //---------MARI-------------------------
     //Points per bookworm
-    [SerializeField] private int pointsPerBookworm = 10;
+    [SerializeField] private int pointsPerBookworm = 100;
     //--------------------------------------
 
     private Bookworm _bookworm;
@@ -42,7 +42,7 @@ public class DepositBox : MonoBehaviour, IBookwormParent
                 _hasShownMissingScoreSystemWarning = true;
             }
 
-            scoreSystem?.AddPoints(pointsPerBookworm);
+            scoreSystem?.RegisterCaughtWorm(pointsPerBookworm);
             //--------------------------------------
     
             OnBookwormDeposited?.Invoke(this, EventArgs.Empty);

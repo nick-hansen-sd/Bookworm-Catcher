@@ -2,9 +2,8 @@ using UnityEngine;
 
 public class PlayerDust : MonoBehaviour
 {
-    [SerializeField] private Player player;
+    [SerializeField] private PlayerRefactor player;
     [SerializeField] private ParticleSystem playerDust;
-
     private ParticleSystem.EmissionModule emission;
     private ParticleSystem.MainModule main;
 
@@ -16,7 +15,7 @@ public class PlayerDust : MonoBehaviour
 
     private void Update()
     {
-        if(player.GetState() == Player.State.Moving || player.GetState() == Player.State.Dashing)
+        if(player.GetState() == PlayerRefactor.State.Moving || player.GetState() == PlayerRefactor.State.Dashing)
         {
             emission.enabled = true;
         }
@@ -25,9 +24,9 @@ public class PlayerDust : MonoBehaviour
             emission.enabled = false;
         }
 
-        if(player.GetState() == Player.State.Dashing)
+        if(player.GetState() == PlayerRefactor.State.Dashing)
         {
-            main.startSize = 1f;
+            main.startSize = 1.5f;
         }
         else
         {

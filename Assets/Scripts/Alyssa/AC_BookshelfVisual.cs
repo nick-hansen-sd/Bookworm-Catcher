@@ -1,13 +1,15 @@
+using System;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
 public class AC_BookshelfVisual : MonoBehaviour
-{
+{  
     [SerializeField] private AC_BookshelfListSO bookshelfListSO;
     [SerializeField] private Sprite selectedSprite;
     [SerializeField] private int minRange;
     [SerializeField] private int maxRange;
+    [SerializeField] private ParticleSystem paperBurst;
     private List<Sprite> bookshelfEatenState;
     private State state;
     private int wormTouchCount;
@@ -71,7 +73,12 @@ public class AC_BookshelfVisual : MonoBehaviour
                 wormTouchCount++;
                 break;
             case State.Half:
-                selectedSprite = bookshelfEatenState[0];
+                //enclosed the sprite change into an if statement so it only changes the sprite once per state change instead of every collision
+                if(selectedSprite != bookshelfEatenState[0])
+                {
+                    selectedSprite = bookshelfEatenState[0];
+                    PlayPaperBurst();
+                }
                 if (wormTouchCount > UnityEngine.Random.Range(3, 6))
                 {
                     wormTouchCount = 0;
@@ -80,20 +87,39 @@ public class AC_BookshelfVisual : MonoBehaviour
                 wormTouchCount++;
                 break;
             case State.Quarter:
-                selectedSprite = bookshelfEatenState[1];
+                if(selectedSprite != bookshelfEatenState[1])
+                {
+                    selectedSprite = bookshelfEatenState[1];
+                    PlayPaperBurst();
+                }
                 if (wormTouchCount > UnityEngine.Random.Range(3, 6))
                 {
+                    //play crumbs
                     wormTouchCount = 0;
                     state = State.Empty;
                 }
                 wormTouchCount++;
                 break;
             case State.Empty:
-                selectedSprite = bookshelfEatenState[2];
+                if(selectedSprite != bookshelfEatenState[2])
+                {
+                    selectedSprite = bookshelfEatenState[2];
+                    PlayPaperBurst();
+                }
                 break;
         }
 
         spriteRender.GetComponent<SpriteRenderer>().sprite = selectedSprite;
         // Debug.Log(selectedSprite);
     }
+
+    //-----Moises-----
+    private void PlayPaperBurst()
+    {
+        if(paperBurst != null)
+        {
+            paperBurst.Play();
+        }
+    }
+    //----------------
 }

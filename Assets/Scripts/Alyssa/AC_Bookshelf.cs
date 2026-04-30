@@ -14,8 +14,8 @@ public class AC_Bookshelf : MonoBehaviour
             //grabs renderer of prefab instance and invokes function
             SpriteRenderer spriteRender = gameObject.GetComponentInChildren<SpriteRenderer>();
             OnCollisionWormBookshelf?.Invoke(spriteRender);
-            Debug.Log("hit");
-            Debug.Log(gameObject.name);
+            // Debug.Log("hit");
+            // Debug.Log(gameObject.name);
         }
             
     }

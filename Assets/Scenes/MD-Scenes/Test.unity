@@ -1514,6 +1514,7 @@ MonoBehaviour:
   pausedMenu: {fileID: 0}
   mainMenuSceneIndex: 0
   optionsSceneIndex: 2
+  pausedSettingsSceneName: PausedSettingsButton
 --- !u!114 &461527529
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2040,6 +2041,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ScoreSystem
   startingScore: 0
+  testWormCount: 4
 --- !u!4 &1043730083
 Transform:
   m_ObjectHideFlags: 0
@@ -2349,6 +2351,7 @@ MonoBehaviour:
   pausedMenu: {fileID: 786188892}
   mainMenuSceneIndex: 0
   optionsSceneIndex: 2
+  pausedSettingsSceneName: PausedSettingsButton
 --- !u!1 &1175189841
 GameObject:
   m_ObjectHideFlags: 0
@@ -3127,9 +3130,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 461527530}
-        m_TargetAssemblyTypeName: OptionsMenu, Assembly-CSharp
-        m_MethodName: BackToPausedGame
+      - m_Target: {fileID: 461527528}
+        m_TargetAssemblyTypeName: PausedMenu, Assembly-CSharp
+        m_MethodName: OpenSettings
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3495,7 +3498,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7166876e82c4cc4599ab4a9dfd6fb68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameTimer
-  startTimeSeconds: 5
+  startTimeSeconds: 15
   timerText: {fileID: 792209808}
   timerPrefix: 'TIME LEFT: '
   gameOverScreen: {fileID: 865304252}
@@ -3503,7 +3506,6 @@ MonoBehaviour:
   - {fileID: 1602946324}
   - {fileID: 8276668}
   - {fileID: 182809116}
-  pointsToPass: 100
   winTitleImage: {fileID: 2140302557}
   gameOverTitleImage: {fileID: 119876953}
   gameOverScoreText: {fileID: 388718257}

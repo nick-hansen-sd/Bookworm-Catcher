@@ -43,6 +43,10 @@ public class Player : MonoBehaviour, IBookwormParent
     private State previousState;
     //------------------------
 
+    //------Alyssa--------
+    private float getMovementX;
+    //--------------------
+
     private bool _isGrounded;
     private bool _canJump;
     private bool _canDoubleJump;
@@ -156,7 +160,7 @@ public class Player : MonoBehaviour, IBookwormParent
         
         transform.position += new Vector3(deltaX, deltaY, 0);
 
-        Debug.Log(_isGrounded);
+        //Debug.Log(_isGrounded);
         ClampPosition();
 
         //---------Moises---------
@@ -164,6 +168,9 @@ public class Player : MonoBehaviour, IBookwormParent
         previousPosition = transform.position;
         previousState = currentState;
         //------------------------
+
+        //------Alyssa-----
+        UpdateDeltaXMovement(deltaX);
     }
     
     
@@ -320,7 +327,7 @@ public class Player : MonoBehaviour, IBookwormParent
             currentState = State.Idle;
         }
 
-        Debug.Log("Current State: " + currentState);
+        //Debug.Log("Current State: " + currentState);
     }
 
     public bool isWalking()
@@ -333,5 +340,24 @@ public class Player : MonoBehaviour, IBookwormParent
         return currentState;
     }
     //-------------------------
+
+
+    //--------Alyssa----------
+    private void UpdateDeltaXMovement(float deltaX)
+    {
+        getMovementX = deltaX;
+        //Debug.Log(getMovementX);
+    }
+
+    public float GetMovementX()
+    {
+        return getMovementX;
+    }
+
+    public bool GetIsGrounded()
+    {
+        return _isGrounded;
+    }
+    //------------------------
     
 }

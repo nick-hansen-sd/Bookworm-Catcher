@@ -19,11 +19,9 @@ public class WormAttackLadder : MonoBehaviour
     [SerializeField] private LayerMask ladderLayerMask;
     [SerializeField] private LayerMask playerLayerMask;
 
-    [SerializeField] private GameObject playerGameObject;
     [SerializeField] private GameObject bookProjectilePrefab;
     [SerializeField] private GameObject slimePrefab;
 
-    private bool touchingPlayer = false;
     [SerializeField] private float attackRate;
     private float attackTimer = 5f;
     [SerializeField] private float retreatTimerMax = 3f;
@@ -51,10 +49,6 @@ public class WormAttackLadder : MonoBehaviour
         {
             transform.eulerAngles = new Vector3(0, -180, 0);
         }
-
-        // Subscribe to OnCaughtBookworm event from Player
-        Player player = playerGameObject.GetComponent<Player>();
-        player.OnCaughtBookworm += BookwormCaught;
     }
 
     private void Update()
@@ -176,16 +170,9 @@ public class WormAttackLadder : MonoBehaviour
         }
     }
 
-    private void BookwormCaught(object sender, EventArgs e)
+    public void BookwormCaught()
     {
-        // If the bookworm is touching the player when the event is triggered, assume this is the bookworm that was caught
-        if (touchingPlayer)
-        {
-            currentState = StateMachine.Caught;
-            Debug.Log("Bookworm caught!");
-            Player player = playerGameObject.GetComponent<Player>();
-            player.OnCaughtBookworm -= BookwormCaught;
-        }
+        currentState = StateMachine.Caught;
     }
 
     private void ChangeDirectionLeftRight()
@@ -203,12 +190,7 @@ public class WormAttackLadder : MonoBehaviour
     }
 
     void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.collider.CompareTag("Player"))
-        {
-            touchingPlayer = true;
-        }
-        
+    {   
         if (collision.collider.CompareTag("Ladder"))
         {
             // Ignore collisions with ladders
@@ -227,14 +209,6 @@ public class WormAttackLadder : MonoBehaviour
             Physics2D.IgnoreCollision(GetComponent<Collider2D>(), collision.collider, true);
         }
         
-    }
-
-    void OnCollisionExit2D(Collision2D collision)
-    {
-        if (collision.collider.CompareTag("Player"))
-        {
-            touchingPlayer = false;
-        }
     }
 
     // Visualize the CircleCast in Scene view

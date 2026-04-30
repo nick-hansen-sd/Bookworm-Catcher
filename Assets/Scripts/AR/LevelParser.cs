@@ -11,6 +11,8 @@ public class LevelParser : MonoBehaviour
     public GameObject basePrefab;
     public GameObject leftBasePrefab;
     public GameObject rightBasePrefab;
+    public GameObject groundFloorPrefab; // Lyn
+    public GameObject levelFloorPrefab; // Lyn
     public GameObject ladderPrefab;
     public GameObject ladderTopPrefab;
     public GameObject ladderBottomPrefab;
@@ -77,6 +79,22 @@ public class LevelParser : MonoBehaviour
                     dirtInstance.position = newPostition;
                 }
                 
+                // Ground Floor Block - Lyn
+                if (currentChar == 'g')
+                {
+                    Vector3 newPostition = new Vector3(columnIndex + 0.5f, row + 0.5f, -0.5f);
+                    Transform dirtInstance = Instantiate(groundFloorPrefab, levelRoot).transform;
+                    dirtInstance.position = newPostition;
+                }
+                
+                // Level Floor Block - Lyn
+                if (currentChar == 'f')
+                {
+                    Vector3 newPostition = new Vector3(columnIndex + 0.5f, row + 0.5f, -0.5f);
+                    Transform dirtInstance = Instantiate(levelFloorPrefab, levelRoot).transform;
+                    dirtInstance.position = newPostition;
+                }
+                
                 // Ladder Block
                 if (currentChar == 'u')
                 {
@@ -115,5 +133,11 @@ public class LevelParser : MonoBehaviour
         }
 
         Debug.Log(wormCount + " worms loaded");
+
+        ScoreSystem scoreSystem = ScoreSystem.Instance != null ? ScoreSystem.Instance : FindFirstObjectByType<ScoreSystem>();
+        if (scoreSystem != null)
+        {
+            scoreSystem.SetWormCount(wormCount);
+        }
     }
 }

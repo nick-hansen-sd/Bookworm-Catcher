@@ -7,7 +7,7 @@ public class SoundManager : MonoBehaviour
     private const string PLAYER_PREFS_SOUND_EFFECTS_VOLUME = "SoundEffectsVolume";
 
     public static SoundManager Instance { get; private set; }
-    [SerializeField] private Player player;
+    [SerializeField] private PlayerRefactor player;
     [SerializeField] private AudioClip singleJump;
     [SerializeField] private AudioClip doubleJump;
     [SerializeField] private AudioClip landing;

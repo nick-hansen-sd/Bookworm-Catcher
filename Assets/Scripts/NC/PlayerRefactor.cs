@@ -38,19 +38,29 @@ public class PlayerRefactor : MonoBehaviour, IBookwormParent
     public event EventHandler SingleJumpActivated;
     public event EventHandler DoubleJumpActivated;
     public event EventHandler LandingActivated;
-    //public event EventHandler WalkingActivated;
+    public event EventHandler MovingActivated;
 
     private Vector2 previousPosition;
     private State currentState;
     private State previousState;
     //------------------------
 
+    //------Alyssa--------
+    private float getMovementX;
+    //--------------------
+
     private bool _isGrounded;
     private bool _canJump;
     private bool _canDoubleJump;
+
+    //---------MARI-------------------------
+    [SerializeField] private float dashDuration = 2f;
+    [SerializeField] private float dashCooldownDuration = 5f;
+    //--------------------------------------
+
     private float _dashTimer;
     private bool _dashActive;
-    private float _dashCooldown = 5.1f;
+    private float _dashCooldownTimer;
     private bool _onLadder;
     private bool _dropping;
     
@@ -71,6 +81,10 @@ public class PlayerRefactor : MonoBehaviour, IBookwormParent
         Instance = this;
         
         _rb = GetComponent<Rigidbody2D>();
+
+        //---------MARI-------------------------
+        _dashCooldownTimer = dashCooldownDuration;
+        //--------------------------------------
     }
     
     void Start()
@@ -90,26 +104,28 @@ public class PlayerRefactor : MonoBehaviour, IBookwormParent
     void FixedUpdate()
     {
         float currentMoveSpeed = baseMoveSpeed;
-        //handle dash timer
-        _dashCooldown += Time.deltaTime;
+        //---------MARI-------------------------
+        //handle dash timer and cooldown timer
         if (_dashActive)
         {
-            if (_dashCooldown > 5f)
+            _dashTimer += Time.deltaTime;
+            currentMoveSpeed = 1.5f*baseMoveSpeed; //move twice as fast during dash
+            if (_dashTimer > dashDuration)
             {
-                _dashTimer += Time.deltaTime;
-                currentMoveSpeed = 1.5f*baseMoveSpeed; //move twice as fast during dash
-                if (_dashTimer > 2f)
-                {
-                    _dashTimer = 0f;
-                    _dashActive = false;
-                    _dashCooldown = 0f;
-                }
-            }
-            else
-            {
+                _dashTimer = 0f;
                 _dashActive = false;
+                _dashCooldownTimer = 0f;
             }
         }
+        else if (_dashCooldownTimer < dashCooldownDuration)
+        {
+            _dashCooldownTimer += Time.deltaTime;
+            if (_dashCooldownTimer > dashCooldownDuration)
+            {
+                _dashCooldownTimer = dashCooldownDuration;
+            }
+        }
+        //--------------------------------------
         //check for on ladder
         _onLadder = Physics2D.CircleCast(transform.position, .05f, Vector2.down, .05f, LayerMask.GetMask("Ladder"));
         //check for on ground/jump capability
@@ -168,6 +184,9 @@ public class PlayerRefactor : MonoBehaviour, IBookwormParent
         previousPosition = transform.position;
         previousState = currentState;
         //------------------------
+
+        //------Alyssa-----
+        UpdateDeltaXMovement(deltaX);
     }
 
     private void OnTriggerStay2D(Collider2D collision)
@@ -216,12 +235,15 @@ public class PlayerRefactor : MonoBehaviour, IBookwormParent
 
     private void GameInput_OnDash(object sender, EventArgs e)
     {
+        //---------MARI-------------------------
+        if (_dashActive || _dashCooldownTimer < dashCooldownDuration)
+        {
+            return;
+        }
+        //--------------------------------------
+
         _dashActive = true;
         _dashTimer = 0f;
-
-        //Moises---------
-        currentState = State.Dashing;
-        //---------------
     }
 
     private void GameInput_OnJump(object sender, EventArgs e)
@@ -231,7 +253,6 @@ public class PlayerRefactor : MonoBehaviour, IBookwormParent
             //Debug.Log("Player_Jump");
             _jumpVelocity = 2f * apexHeight / apexTime;
             //Moises---------
-            currentState = State.SingleJump;
             SingleJumpActivated?.Invoke(this, EventArgs.Empty);
             //---------------
             _canJump = false;
@@ -242,7 +263,6 @@ public class PlayerRefactor : MonoBehaviour, IBookwormParent
             //Debug.Log("Player_DoubleJump");
             _jumpVelocity = 2f * apexHeight / apexTime;
             //Moises---------
-            currentState = State.DoubleJump;
             DoubleJumpActivated?.Invoke(this, EventArgs.Empty);
             //---------------
             _canJump = false;
@@ -301,6 +321,25 @@ public class PlayerRefactor : MonoBehaviour, IBookwormParent
         {
             //TODO: Finish Player SetBookworm
             OnCaughtBookworm?.Invoke(this, EventArgs.Empty);
+
+            /*
+            Nick's code -----------------------------------------------------------------------
+            */
+            // Stop bookworms from moving once they are caught
+            WormPatrol wormPatrol = _bookworm.GetComponent<WormPatrol>();
+            WormAttackLadder wormAttackLadder = _bookworm.GetComponent<WormAttackLadder>();
+
+            // Check which bookworm type was caught to call the proper method
+            if (wormPatrol != null)
+            {
+                wormPatrol.BookwormCaught();
+            } else if (wormAttackLadder != null)
+            {
+                wormAttackLadder.BookwormCaught();
+            }
+            /*
+            -----------------------------------------------------------------------------------
+            */
         }
     }
 
@@ -326,7 +365,7 @@ public class PlayerRefactor : MonoBehaviour, IBookwormParent
         if((Vector2)transform.position != previousPosition)
         {
             //If Player is moving along a ladder
-            if(_onLadder)
+            if(_onLadder && !_isGrounded)
             {
                 currentState = State.Climbing;
             }
@@ -335,16 +374,36 @@ public class PlayerRefactor : MonoBehaviour, IBookwormParent
             {
                 currentState = State.Falling;
             }
+            else if(_canJump == false && _canDoubleJump == true)
+            {
+                currentState = State.SingleJump;
+            }
+            else if(_canJump == false && _canDoubleJump == false && !_isGrounded)
+            {
+                currentState = State.DoubleJump;
+            }
             //If player is moving left or right, without dashing
-            else if ((transform.position.x != previousPosition.x) && (transform.position.y == previousPosition.y) && !_dashActive)
+            else if ((transform.position.x != previousPosition.x) && Mathf.Approximately(transform.position.y,previousPosition.y))
             {
                 //If going from falling to walking
                 if (previousState == State.Falling)
                 {
                     LandingActivated?.Invoke(this, EventArgs.Empty);
                 }
-                //WalkingActivated?.Invoke(this, EventArgs.Empty);
-                currentState = State.Moving;
+                if (_isGrounded)
+                {
+                    //if dashing
+                    if(_dashActive == true)
+                    {
+                        currentState = State.Dashing;
+                    }
+                    //if grounded, changing position, and not dashing
+                    else
+                    {
+                        MovingActivated?.Invoke(this, EventArgs.Empty);
+                        currentState = State.Moving;
+                    }
+                }
             }
         }
         //If player is not changing direction
@@ -365,6 +424,72 @@ public class PlayerRefactor : MonoBehaviour, IBookwormParent
     {
         return currentState == State.Moving;
     }
+
+    public State GetState()
+    {
+        return currentState;
+    }
+
+    //---------MARI-------------------------
+    public bool IsDashActive()
+    {
+        return _dashActive;
+    }
+
+    public bool IsDashReady()
+    {
+        return !_dashActive && _dashCooldownTimer >= dashCooldownDuration;
+    }
+
+    public float GetDashDuration()
+    {
+        return dashDuration;
+    }
+
+    public float GetDashTimeRemaining()
+    {
+        if (!_dashActive)
+        {
+            return 0f;
+        }
+
+        return Mathf.Max(0f, dashDuration - _dashTimer);
+    }
+
+    public float GetDashCooldownDuration()
+    {
+        return dashCooldownDuration;
+    }
+
+    public float GetDashCooldownTimeRemaining()
+    {
+        if (_dashActive)
+        {
+            return dashCooldownDuration;
+        }
+
+        return Mathf.Max(0f, dashCooldownDuration - _dashCooldownTimer);
+    }
+    //--------------------------------------
     //-------------------------
+
+
+    //--------Alyssa----------
+    private void UpdateDeltaXMovement(float deltaX)
+    {
+        getMovementX = deltaX;
+        //Debug.Log(getMovementX);
+    }
+
+    public float GetMovementX()
+    {
+        return getMovementX;
+    }
+
+    public bool GetIsGrounded()
+    {
+        return _isGrounded;
+    }
+    //------------------------
     
 }

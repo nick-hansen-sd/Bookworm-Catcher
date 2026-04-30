@@ -8,7 +8,7 @@ public class Bookworm : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("Bookworm_CollisionEnter2D");
+        //Debug.Log("Bookworm_CollisionEnter2D");
         if (collision.gameObject.GetComponent<Player>() && !_parentIsPlayer)
         {
             SetObjectParent(collision.gameObject.GetComponent<Player>());

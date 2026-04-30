@@ -12,21 +12,27 @@ public class OptionsMenu : MonoBehaviour
     [SerializeField] private TextMeshProUGUI musicVolumeText;
     [SerializeField] private TextMeshProUGUI soundEffectVolumeText;
     [SerializeField] private int mainMenuSceneIndex = 0;
-    [SerializeField] private int gameplaySceneIndex = 1;
+    [SerializeField] private int gameplaySceneIndex = 3;
 
     private void Awake()
     {
        // Check if buttons are assigned to avoid the error
         if (soundEffectVolumeButton != null) {
             soundEffectVolumeButton.onClick.AddListener(() => {
-                SoundManager.Instance.ChangeVolume();
+                if (SoundManager.Instance != null)
+                {
+                    SoundManager.Instance.ChangeVolume();
+                }
                 UpdateVisual();
             });
         }
 
         if (musicVolumeButton != null) {
             musicVolumeButton.onClick.AddListener(() => {
-                MusicManager.Instance.ChangeVolume();
+                if (MusicManager.Instance != null)
+                {
+                    MusicManager.Instance.ChangeVolume();
+                }
                 UpdateVisual();
             });
         }
@@ -42,8 +48,15 @@ public class OptionsMenu : MonoBehaviour
 
     private void UpdateVisual()
     {
-        soundEffectVolumeText.text = "Sound FX: " + Mathf.Round(SoundManager.Instance.GetVolume() * 10f);
-        musicVolumeText.text = "Music: " + Mathf.Round(MusicManager.Instance.GetVolume() * 10f);
+        if (soundEffectVolumeText != null && SoundManager.Instance != null)
+        {
+            soundEffectVolumeText.text = "Sound FX: " + Mathf.Round(SoundManager.Instance.GetVolume() * 10f);
+        }
+
+        if (musicVolumeText != null && MusicManager.Instance != null)
+        {
+            musicVolumeText.text = "Music: " + Mathf.Round(MusicManager.Instance.GetVolume() * 10f);
+        }
     }
     //----------------------
     
@@ -51,13 +64,14 @@ public class OptionsMenu : MonoBehaviour
     public void BackToMainMenu()
     {
         Time.timeScale = 1f;
-        SceneManager.LoadSceneAsync(mainMenuSceneIndex);
+        SceneManager.LoadSceneAsync(mainMenuSceneIndex);  
     }
 
     // Use this for the Options button opened from Pause Menu.
     public void BackToPausedGame()
     {
         Time.timeScale = 1f;
+        PausedMenu.ReturnToPausedStateOnLoad = true;
         SceneManager.LoadSceneAsync(gameplaySceneIndex);
     }
 }

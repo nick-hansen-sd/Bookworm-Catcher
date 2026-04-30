@@ -4,10 +4,27 @@ using UnityEngine.InputSystem;
 
 public class PausedMenu : MonoBehaviour
 {
+    public static bool ReturnToPausedStateOnLoad { get; set; }
+
     [SerializeField] private GameObject pausedMenu;
     [SerializeField] private int mainMenuSceneIndex = 0;
     [SerializeField] private int optionsSceneIndex = 8;
+    [SerializeField] private string pausedSettingsSceneName = "PausedSettingsButton";
     private bool hasShownMissingReferenceWarning;
+
+    private void Start()
+    {
+        if (ReturnToPausedStateOnLoad)
+        {
+            ReturnToPausedStateOnLoad = false;
+
+            if (pausedMenu != null)
+            {
+                pausedMenu.SetActive(true);
+                Time.timeScale = 0f;
+            }
+        }
+    }
 
     void Update()
     {
@@ -54,6 +71,14 @@ public class PausedMenu : MonoBehaviour
 
     //Goes to the options menu scene
    public void OpenSettings(){
+    Time.timeScale = 1f;
+
+    if (!string.IsNullOrWhiteSpace(pausedSettingsSceneName))
+    {
+        SceneManager.LoadSceneAsync(pausedSettingsSceneName);
+        return;
+    }
+
     SceneManager.LoadSceneAsync(optionsSceneIndex);
    }
 

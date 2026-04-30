@@ -1,4 +1,4 @@
-lxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxr
+gggggggggggggggggggggggggggggggggggggggggg
                                          t
                                          u
                                     w    u
@@ -10,7 +10,7 @@ lxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxr
          u                               u
          u                               u
          b                      w        b
-txxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxr
+tfffffffffffffffffffffffffffffffffffffffff
 u
 u
 u
@@ -22,7 +22,7 @@ u                    w   u
 u                lxxxxxxru           
 u                        u
 b                        b
-lxxxxxxxxxxxxxxxxxxxxtxxxxxxxxxxxxxxxxxxxr
+ffffffffffffffffffffftffffffffffffffffffff
                      u
                      u
                      u
@@ -34,10 +34,10 @@ lxxrt                u              w
     u                u            lxxr
     u                u   
     b                b
-lxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxr
-lxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxr
-lxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxr
-lxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxr
-lxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxr
-lxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxr
-lxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxr
+gggggggggggggggggggggggggggggggggggggggggg
+gggggggggggggggggggggggggggggggggggggggggg
+gggggggggggggggggggggggggggggggggggggggggg
+gggggggggggggggggggggggggggggggggggggggggg
+gggggggggggggggggggggggggggggggggggggggggg
+gggggggggggggggggggggggggggggggggggggggggg
+gggggggggggggggggggggggggggggggggggggggggg

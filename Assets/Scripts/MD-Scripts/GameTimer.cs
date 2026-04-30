@@ -4,6 +4,7 @@ using UnityEngine;
 public class GameTimer : MonoBehaviour
 {
     private const string HighScoreKey = "HighScore";
+    private const int PointsPerSecondRemaining = 50;
 
     [SerializeField] private float startTimeSeconds = 60f;
     [SerializeField] private TMP_Text timerText;
@@ -11,8 +12,6 @@ public class GameTimer : MonoBehaviour
 
     [SerializeField] private GameObject gameOverScreen;
     [SerializeField] private GameObject[] filledStars;
-    [SerializeField] private int pointsToPass = 100;
-
     [SerializeField] private GameObject winTitleImage;
     [SerializeField] private GameObject gameOverTitleImage;
     [SerializeField] private TMP_Text gameOverScoreText;
@@ -28,6 +27,13 @@ public class GameTimer : MonoBehaviour
         // Ensure gameplay starts unpaused when scene loads.
         Time.timeScale = 1f;
         _timeRemaining = Mathf.Max(0f, startTimeSeconds);
+
+        LevelParser levelParser = FindFirstObjectByType<LevelParser>();
+        ScoreSystem scoreSystem = ScoreSystem.Instance != null ? ScoreSystem.Instance : FindFirstObjectByType<ScoreSystem>();
+        if (levelParser != null && scoreSystem != null && levelParser.wormCountGetter() > 0)
+        {
+            scoreSystem.SetWormCount(levelParser.wormCountGetter());
+        }
 
         //Make sure the game over screen is not active
         if (gameOverScreen != null)
@@ -46,13 +52,20 @@ public class GameTimer : MonoBehaviour
             return;
         }
 
+        if (AreAllWormsCaught())
+        {
+            _hasEnded = true;
+            UpdateTimerText();
+            GameOver();
+            return;
+        }
+
         _timeRemaining -= Time.deltaTime;
         if (_timeRemaining <= 0f)
         {
             _timeRemaining = 0f;
             _hasEnded = true;
             UpdateTimerText();
-            Time.timeScale = 0f;
             GameOver();
             return;
         }
@@ -71,6 +84,12 @@ public class GameTimer : MonoBehaviour
         timerText.text = timerPrefix + wholeSeconds;
     }
 
+    private bool AreAllWormsCaught()
+    {
+        ScoreSystem scoreSystem = ScoreSystem.Instance != null ? ScoreSystem.Instance : FindFirstObjectByType<ScoreSystem>();
+        return scoreSystem != null && scoreSystem.GetTotalWormCount() > 0 && scoreSystem.GetRemainingWormCount() <= 0;
+    }
+
     private void GameOver(){
         Time.timeScale = 0f;
         if (gameOverScreen != null)
@@ -78,27 +97,41 @@ public class GameTimer : MonoBehaviour
             gameOverScreen.SetActive(true);
         }
 
-        ScoreSystem scoreSystem = ScoreSystem.Instance != null ? ScoreSystem.Instance : FindObjectOfType<ScoreSystem>();
-        int finalScore = scoreSystem != null ? scoreSystem.GetScore() : 0;
+        ScoreSystem scoreSystem = ScoreSystem.Instance != null ? ScoreSystem.Instance : FindFirstObjectByType<ScoreSystem>();
+        int caughtWorms = scoreSystem != null ? scoreSystem.GetCaughtWormCount() : 0;
+        int totalWorms = scoreSystem != null ? scoreSystem.GetTotalWormCount() : 0;
+
+        int scoreBeforeTimeBonus = scoreSystem != null ? scoreSystem.GetScore() : 0;
+        bool caughtAllWorms = totalWorms > 0 && caughtWorms >= totalWorms;
+        int timeBonus = caughtAllWorms ? Mathf.Max(0, Mathf.FloorToInt(_timeRemaining)) * PointsPerSecondRemaining : 0;
+        if (scoreSystem != null && timeBonus > 0)
+        {
+            scoreSystem.AddPoints(timeBonus);
+        }
+
+        int finalScore = scoreBeforeTimeBonus + timeBonus;
         UpdateGameOverScoreText(startingScore: false, finalScore: finalScore);
 
         // Reset filled star overlays so only earned stars are shown.
-        foreach (GameObject star in filledStars)
+        if (filledStars != null)
         {
-            if (star != null)
+            foreach (GameObject star in filledStars)
             {
-                star.SetActive(false);
+                if (star != null)
+                {
+                    star.SetActive(false);
+                }
             }
         }
 
-        bool isWin = finalScore >= pointsToPass;
+        bool isWin = totalWorms > 0 && caughtWorms * 2 >= totalWorms;
 
         if (isWin){
             // WIN STATE
             if (winTitleImage != null) winTitleImage.SetActive(true);
             if (gameOverTitleImage != null) gameOverTitleImage.SetActive(false);
 
-            AwardStar(finalScore);
+            AwardStar(caughtWorms, totalWorms);
         }else{
             // LOSE STATE
             if (winTitleImage != null) winTitleImage.SetActive(false);
@@ -106,23 +139,28 @@ public class GameTimer : MonoBehaviour
         }
     }
 
-    private void AwardStar(int score){
+    private void AwardStar(int caughtWorms, int totalWorms){
         if (filledStars == null || filledStars.Length == 0)
         {
             return;
         }
 
-        if (filledStars.Length > 0 && filledStars[0] != null && score >= pointsToPass)
+        if (totalWorms <= 0)
+        {
+            return;
+        }
+
+        if (filledStars.Length > 0 && filledStars[0] != null && caughtWorms * 2 >= totalWorms)
         {
             filledStars[0].SetActive(true);
         }
 
-        if (filledStars.Length > 1 && filledStars[1] != null && score >= pointsToPass * 2)
+        if (filledStars.Length > 1 && filledStars[1] != null && caughtWorms * 4 >= totalWorms * 3)
         {
             filledStars[1].SetActive(true);
         }
 
-        if (filledStars.Length > 2 && filledStars[2] != null && score >= pointsToPass * 3)
+        if (filledStars.Length > 2 && filledStars[2] != null && caughtWorms >= totalWorms)
         {
             filledStars[2].SetActive(true);
         }

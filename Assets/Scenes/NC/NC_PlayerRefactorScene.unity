@@ -133,7 +133,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2746153665422607754, guid: 76a088a1d98eaee44bc7f0ab625acbc6, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.5137
+      value: 6.56
       objectReference: {fileID: 0}
     - target: {fileID: 2746153665422607754, guid: 76a088a1d98eaee44bc7f0ab625acbc6, type: 3}
       propertyPath: m_LocalPosition.z
@@ -640,6 +640,7 @@ MonoBehaviour:
   apexHeight: 4
   apexTime: 0.5
   groundLevel: 0
+  ceilingLevel: 0
   leftWall: 0
   rightWall: 42
 --- !u!70 &879239097 stripped
@@ -686,10 +687,13 @@ MonoBehaviour:
   basePrefab: {fileID: 4920958026671347910, guid: 9ffda563c37143c4f9176113490264a4, type: 3}
   leftBasePrefab: {fileID: 4920958026671347910, guid: 06a7d72bbb17fb74b8869e262111d2e7, type: 3}
   rightBasePrefab: {fileID: 4920958026671347910, guid: fbe4908f10cff1143a0897619fdb15ee, type: 3}
+  groundFloorPrefab: {fileID: 0}
+  levelFloorPrefab: {fileID: 0}
   ladderPrefab: {fileID: 4920958026671347910, guid: 1c20a0845e9a961429a07aca72dbace0, type: 3}
   ladderTopPrefab: {fileID: 4920958026671347910, guid: 555783ff179f6174380b8d8e596ca0c0, type: 3}
   ladderBottomPrefab: {fileID: 4920958026671347910, guid: d7cf92186543fb744928ffa7433d5740, type: 3}
   wormPrefab: {fileID: 2379112269403398562, guid: 469b7053b971f554da6a710e13f107ff, type: 3}
+  wormCount: 0
 --- !u!4 &1173965914
 Transform:
   m_ObjectHideFlags: 0

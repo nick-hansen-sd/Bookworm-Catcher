@@ -12,9 +12,6 @@ public class WormPatrol : MonoBehaviour
 
     [SerializeField] private LayerMask groundLayerMask;
 
-    [SerializeField] private GameObject playerGameObject;
-    private bool touchingPlayer = false;
-
     public enum StateMachine
     {
         Patrol,
@@ -32,10 +29,6 @@ public class WormPatrol : MonoBehaviour
         {
             transform.eulerAngles = new Vector3(0, -180, 0);
         }
-
-        // Subscribe to OnCaughtBookworm event from Player
-        Player player = playerGameObject.GetComponent<Player>();
-        player.OnCaughtBookworm += BookwormCaught;
     }
 
     private void Update()
@@ -70,9 +63,13 @@ public class WormPatrol : MonoBehaviour
         }
     }
 
+    public void BookwormCaught()
+    {
+        currentState = StateMachine.Caught;
+    }
+
     private void ChangeDirectionLeftRight()
     {
-        // Debug.Log("Floor not detected");
         if (movingRight)
         {
             transform.eulerAngles = new Vector3(0, -180, 0);
@@ -84,25 +81,8 @@ public class WormPatrol : MonoBehaviour
         }
     }
 
-    private void BookwormCaught(object sender, EventArgs e)
-    {
-        // If the bookworm is touching the player when the event is triggered, assume this is the bookworm that was caught
-        if (touchingPlayer)
-        {
-            currentState = StateMachine.Caught;
-            Debug.Log("Bookworm caught!");
-            Player player = playerGameObject.GetComponent<Player>();
-            player.OnCaughtBookworm -= BookwormCaught;
-        }
-    }
-
     void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.collider.CompareTag("Player"))
-        {
-            touchingPlayer = true;
-        }
-        
+    {   
         if (collision.collider.CompareTag("Ladder"))
         {
             // Ignore collisions with ladders
@@ -123,11 +103,10 @@ public class WormPatrol : MonoBehaviour
         
     }
 
-    void OnCollisionExit2D(Collision2D collision)
+    //------Moises-------
+    public StateMachine GetState()
     {
-        if (collision.collider.CompareTag("Player"))
-        {
-            touchingPlayer = false;
-        }
+        return currentState;
     }
+    //--------------------
 }

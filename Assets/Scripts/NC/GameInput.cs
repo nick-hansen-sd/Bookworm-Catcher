@@ -32,7 +32,7 @@ public class GameInput : MonoBehaviour
 
     private void Jump_performed(InputAction.CallbackContext obj)
     {
-        Debug.Log("Jump performed");
+        //Debug.Log("Jump performed");
         OnJump?.Invoke(this, EventArgs.Empty);
     }
 
