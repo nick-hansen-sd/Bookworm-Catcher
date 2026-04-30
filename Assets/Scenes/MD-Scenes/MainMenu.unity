@@ -358,7 +358,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca6e456392dea724186d3966ef6e6aaf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MainMenu
-  firstLevelSceneIndex: 9
+  firstLevelSceneIndex: 1
   optionsSceneIndex: 2
 --- !u!114 &141574553
 MonoBehaviour:
