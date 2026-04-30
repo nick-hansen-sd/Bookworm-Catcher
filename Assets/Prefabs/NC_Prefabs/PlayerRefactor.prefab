@@ -366,10 +366,10 @@ MonoBehaviour:
   bookwormHoldPoint: {fileID: 0}
   baseMoveSpeed: 7
   ladderMoveSpeed: 5
-  dropMoveSpeed: 2
+  dropMoveSpeed: 1
   apexHeight: 4
   apexTime: 0.5
-  groundLevel: 6
+  groundLevel: 7
   ceilingLevel: 40
   leftWall: 0.5
   rightWall: 41.5

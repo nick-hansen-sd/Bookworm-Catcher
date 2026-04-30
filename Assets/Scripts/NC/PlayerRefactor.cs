@@ -197,7 +197,17 @@ public class PlayerRefactor : MonoBehaviour, IBookwormParent
             ClearBookworm();
         }
     }
-    
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.GetComponent<Bookworm>() && _bookworm == null)
+        {
+            Bookworm tempWorm =  collision.gameObject.GetComponent<Bookworm>();
+            tempWorm.SetObjectParent(this);
+            SetBookworm(tempWorm);
+        }
+    }
+
     private void GameInput_OnDrop(object sender, EventArgs e)
     {
         //Debug.Log("PlayerRefactor_Dropping");

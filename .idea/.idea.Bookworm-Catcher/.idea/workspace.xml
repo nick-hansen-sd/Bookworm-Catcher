@@ -6,9 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="515b1211-564e-4bf5-9b47-24703bcafae7" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Bookworm-Catcher/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Bookworm-Catcher/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/AR-Scenes/ARTest.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/AR-Scenes/ARTest.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/AR/Level1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AR/Level1.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/AR/LevelParser.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AR/LevelParser.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/NC_Prefabs/PlayerRefactor.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/NC_Prefabs/PlayerRefactor.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/NH-Prefabs/Bookworm_Default.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/NH-Prefabs/Bookworm_Default.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/NC/NC_WorkingScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/NC/NC_WorkingScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/NC/PlayerRefactor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/NC/PlayerRefactor.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -122,6 +123,7 @@
       <workItem from="1776818492430" duration="4021000" />
       <workItem from="1777346171143" duration="7493000" />
       <workItem from="1777430536968" duration="958000" />
+      <workItem from="1777513290700" duration="2269000" />
     </task>
     <servers />
   </component>
