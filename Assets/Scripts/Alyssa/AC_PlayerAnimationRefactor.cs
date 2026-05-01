@@ -8,12 +8,21 @@ public class AC_PlayerAnimationRefactor : MonoBehaviour
     private string currentAnim;
     private string currentBaseAnim;
 
+    private string FACING_FRONT = "FacingFront";
+    private string FACING_BACK = "FacingBack";
+    private string FACING_LEFT = "FacingLeft";
+    private string FACING_RIGHT = "FacingRight";
+    private string WALKING_RIGHT = "WalkingRight";
+    private string WALKING_LEFT = "WalkingLeft";
+    private string DASH_RIGHT = "DashRight";
+    private string DASH_LEFT = "DashLeft";
+
 
     private void Start()
     {
         animator = GetComponent<Animator>();
-        currentAnim = "FacingFront";
-        currentBaseAnim = "FacingFront";
+        currentAnim = FACING_FRONT;
+        currentBaseAnim = FACING_FRONT;
     }
     
 
@@ -26,66 +35,47 @@ public class AC_PlayerAnimationRefactor : MonoBehaviour
             if (0 != playerRefactor.GetMovementX())
             {
                 if (0 > playerRefactor.GetMovementX())
-                    ActionAnimation("DashLeft", "FacingLeft");
+                    ActionAnimation(DASH_LEFT, FACING_LEFT);
                 
                 else if (0 < playerRefactor.GetMovementX())
-                    ActionAnimation("DashRight", "FacingRight");
+                    ActionAnimation(DASH_RIGHT, FACING_RIGHT);
             }
             
         }
         
         
         if(playerRefactor.GetState() == PlayerRefactor.State.Moving)
-        {        
-            // if (player.GetState() != Player.State.SingleJump && player.GetState() != Player.State.DoubleJump)
-            // {
-                if (0 > playerRefactor.GetMovementX())
-                    ActionAnimation("WalkingLeft", "FacingLeft");
-                
-                else if (0 < playerRefactor.GetMovementX())
-                    ActionAnimation("WalkingRight", "FacingRight");
-            // }
-
-            // else
-            // {
-            //     animator.SetBool("WalkingRight", false);
-            //     animator.SetBool("WalkingLeft", false);
-            // }
+        {    
+            if (0 > playerRefactor.GetMovementX())
+                ActionAnimation(WALKING_LEFT, FACING_LEFT);
             
+            else if (0 < playerRefactor.GetMovementX())
+                ActionAnimation(WALKING_RIGHT, FACING_RIGHT);
         }
 
 
         if (playerRefactor.GetState() == PlayerRefactor.State.Idle || 0 == playerRefactor.GetMovementX())
         {
-            animator.SetBool("WalkingRight", false);
-            animator.SetBool("WalkingLeft", false);
-            animator.SetBool("DashRight", false);
-            animator.SetBool("DashLeft", false);
+            animator.SetBool(WALKING_RIGHT, false);
+            animator.SetBool(WALKING_LEFT, false);
+            animator.SetBool(DASH_RIGHT, false);
+            animator.SetBool(DASH_LEFT, false);
             
             if (Keyboard.current.wKey.wasPressedThisFrame || Keyboard.current.upArrowKey.wasPressedThisFrame )
-            {
-                SwitchBaseAnimation("FacingBack");
-            }
+                SwitchBaseAnimation(FACING_BACK);
                 
             if (Keyboard.current.sKey.wasPressedThisFrame || Keyboard.current.downArrowKey.wasPressedThisFrame )
-            {
-                SwitchBaseAnimation("FacingFront");
-            }
+                SwitchBaseAnimation(FACING_FRONT);
                 
             if (Keyboard.current.aKey.wasPressedThisFrame || Keyboard.current.leftArrowKey.wasPressedThisFrame )
-            {
-                SwitchBaseAnimation("FacingLeft");
-            }
+                SwitchBaseAnimation(FACING_LEFT);
                 
             if (Keyboard.current.dKey.wasPressedThisFrame || Keyboard.current.rightArrowKey.wasPressedThisFrame )
-            {
-                SwitchBaseAnimation("FacingRight");
-            }
+                SwitchBaseAnimation(FACING_RIGHT); 
         }
         
-        
-                
     }
+
 
     private void SwitchBaseAnimation(string newAnim)
     {
@@ -101,6 +91,7 @@ public class AC_PlayerAnimationRefactor : MonoBehaviour
             // Debug.Log(currentAnim);
         }
     }
+
 
     private void ActionAnimation(string newAnim, string newBaseAnim)
     {
