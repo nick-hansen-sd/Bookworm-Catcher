@@ -1217,7 +1217,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7166876e82c4cc4599ab4a9dfd6fb68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameTimer
-  startTimeSeconds: 60
+  startTimeSeconds: 120
   timerText: {fileID: 687900320}
   timerPrefix: 'TIME LEFT: '
   gameOverScreen: {fileID: 1098897556}
