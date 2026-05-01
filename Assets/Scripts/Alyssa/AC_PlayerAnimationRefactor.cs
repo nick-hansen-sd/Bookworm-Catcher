@@ -20,6 +20,8 @@ public class AC_PlayerAnimationRefactor : MonoBehaviour
 
     private void Start()
     {
+        //base animations are necessary so that when an action stops (i.e. walking), it goes to it's matching idle rather than a mismatch one
+
         animator = GetComponent<Animator>();
         currentAnim = FACING_FRONT;
         currentBaseAnim = FACING_FRONT;
@@ -35,10 +37,10 @@ public class AC_PlayerAnimationRefactor : MonoBehaviour
             if (0 != playerRefactor.GetMovementX())
             {
                 if (0 > playerRefactor.GetMovementX())
-                    ActionAnimation(DASH_LEFT, FACING_LEFT);
+                    SwitchAnimation(DASH_LEFT, FACING_LEFT);
                 
                 else if (0 < playerRefactor.GetMovementX())
-                    ActionAnimation(DASH_RIGHT, FACING_RIGHT);
+                    SwitchAnimation(DASH_RIGHT, FACING_RIGHT);
             }
             
         }
@@ -47,10 +49,10 @@ public class AC_PlayerAnimationRefactor : MonoBehaviour
         if(playerRefactor.GetState() == PlayerRefactor.State.Moving)
         {    
             if (0 > playerRefactor.GetMovementX())
-                ActionAnimation(WALKING_LEFT, FACING_LEFT);
+                SwitchAnimation(WALKING_LEFT, FACING_LEFT);
             
             else if (0 < playerRefactor.GetMovementX())
-                ActionAnimation(WALKING_RIGHT, FACING_RIGHT);
+                SwitchAnimation(WALKING_RIGHT, FACING_RIGHT);
         }
 
 
@@ -62,39 +64,42 @@ public class AC_PlayerAnimationRefactor : MonoBehaviour
             animator.SetBool(DASH_LEFT, false);
             
             if (Keyboard.current.wKey.wasPressedThisFrame || Keyboard.current.upArrowKey.wasPressedThisFrame )
-                SwitchBaseAnimation(FACING_BACK);
+                SwitchAnimation(FACING_BACK, FACING_BACK);
                 
             if (Keyboard.current.sKey.wasPressedThisFrame || Keyboard.current.downArrowKey.wasPressedThisFrame )
-                SwitchBaseAnimation(FACING_FRONT);
+                SwitchAnimation(FACING_FRONT, FACING_FRONT);
                 
             if (Keyboard.current.aKey.wasPressedThisFrame || Keyboard.current.leftArrowKey.wasPressedThisFrame )
-                SwitchBaseAnimation(FACING_LEFT);
+                SwitchAnimation(FACING_LEFT, FACING_LEFT);
                 
             if (Keyboard.current.dKey.wasPressedThisFrame || Keyboard.current.rightArrowKey.wasPressedThisFrame )
-                SwitchBaseAnimation(FACING_RIGHT); 
+                SwitchAnimation(FACING_RIGHT, FACING_RIGHT); 
         }
         
     }
 
 
-    private void SwitchBaseAnimation(string newAnim)
-    {
-        if (newAnim != currentAnim)
-        {
-            animator.SetBool(currentAnim, false);
-            animator.SetBool(currentBaseAnim, false);
+    // private void SwitchBaseAnimation(string newAnim)
+    // {
+    //     //only resetting the base animations
+    //     if (newAnim != currentAnim)
+    //     {
+    //         animator.SetBool(currentAnim, false);
+    //         animator.SetBool(currentBaseAnim, false);
 
-            animator.SetBool(newAnim, true);
+    //         animator.SetBool(newAnim, true);
             
-            currentAnim = newAnim;
-            currentBaseAnim = newAnim;
-            // Debug.Log(currentAnim);
-        }
-    }
+    //         currentAnim = newAnim;
+    //         currentBaseAnim = newAnim;
+    //         // Debug.Log(currentAnim);
+    //     }
+    // }
 
 
-    private void ActionAnimation(string newAnim, string newBaseAnim)
+    private void SwitchAnimation(string newAnim, string newBaseAnim)
     {
+        //when animation changes, set current animations to false and set it to the new ones
+        //also changes it's base animation to fall back on when an active (walk, dash) animation is done 
         if (newAnim != currentAnim)
         {
             animator.SetBool(currentAnim, false);

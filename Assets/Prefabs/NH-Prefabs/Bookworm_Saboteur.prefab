@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6668651710793933201}
   - component: {fileID: 2001766334280382092}
   - component: {fileID: 3259681810550414033}
+  - component: {fileID: 6522289794492711738}
   m_Layer: 0
   m_Name: WormSaboteurVisual
   m_TagString: Untagged
@@ -114,6 +115,20 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &6522289794492711738
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 569589779052542558}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc7a07981873eab41b06ec9db4a8d9f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AC_WormSaboteurAnimation
+  wormSaboteur: {fileID: 5221703192962375367}
+  animator: {fileID: 3259681810550414033}
 --- !u!1 &1658175920425902531
 GameObject:
   m_ObjectHideFlags: 0

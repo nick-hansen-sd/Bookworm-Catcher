@@ -227,4 +227,12 @@ public class WormAttackLadder : MonoBehaviour
         Gizmos.color = Color.green;
         Gizmos.DrawLine(origin, endPosition);
     }
+
+
+     //------Alyssa-------
+    public StateMachine GetState()
+    {
+        return currentState;
+    }
+    //--------------------
 }
