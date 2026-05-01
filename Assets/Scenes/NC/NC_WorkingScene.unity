@@ -4297,15 +4297,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8671069642866240918, guid: 0394c17ec00cc44448c516d01e1543d3, type: 3}
       propertyPath: m_LocalScale.x
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8671069642866240918, guid: 0394c17ec00cc44448c516d01e1543d3, type: 3}
       propertyPath: m_LocalScale.y
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8671069642866240918, guid: 0394c17ec00cc44448c516d01e1543d3, type: 3}
       propertyPath: m_LocalScale.z
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8671069642866240918, guid: 0394c17ec00cc44448c516d01e1543d3, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4540,10 +4540,12 @@ MonoBehaviour:
   basePrefab: {fileID: 4920958026671347910, guid: 9ffda563c37143c4f9176113490264a4, type: 3}
   leftBasePrefab: {fileID: 4920958026671347910, guid: 06a7d72bbb17fb74b8869e262111d2e7, type: 3}
   rightBasePrefab: {fileID: 4920958026671347910, guid: fbe4908f10cff1143a0897619fdb15ee, type: 3}
+  groundFloorPrefab: {fileID: 4776090391161443999, guid: 71e723d9b1a693a4abbcf602df1b2a8e, type: 3}
+  levelFloorPrefab: {fileID: 1172441657127778903, guid: d833f26de00ef994fb1a431888dc41b9, type: 3}
   ladderPrefab: {fileID: 4920958026671347910, guid: 1c20a0845e9a961429a07aca72dbace0, type: 3}
   ladderTopPrefab: {fileID: 4920958026671347910, guid: 555783ff179f6174380b8d8e596ca0c0, type: 3}
   ladderBottomPrefab: {fileID: 4920958026671347910, guid: d7cf92186543fb744928ffa7433d5740, type: 3}
-  wormPrefab: {fileID: 2379112269403398562, guid: 9c4a26710ad39c649ba7b82bb4f71bb3, type: 3}
+  wormPrefab: {fileID: 2501874585217700401, guid: 2b9ccc5909c3cf444a729a352ca6524b, type: 3}
   wormCount: 0
 --- !u!4 &1597742679
 Transform:
@@ -5086,3 +5088,4 @@ SceneRoots:
   - {fileID: 51874154}
   - {fileID: 1229409584}
   - {fileID: 458933185}
+  - {fileID: 962468951}
