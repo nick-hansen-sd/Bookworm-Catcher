@@ -28,6 +28,7 @@ public class AC_BookshelfVisual : MonoBehaviour
     public void Awake()
     {
         AC_Bookshelf.OnCollisionWormBookshelf += OnCollisionWormBookshelf;
+        AC_BookshelfRefactored.OnCollisionWormBookshelf += OnCollisionWormBookshelf;
     }
     
 
@@ -59,7 +60,7 @@ public class AC_BookshelfVisual : MonoBehaviour
         if (spriteRender != this.gameObject.GetComponent<SpriteRenderer>())
             return;
         
-        // Debug.Log("change sprite");
+        // Debug.Log("hit by worm");
         //changes sprite after a certain amount of collisions with worm
         //sprites should change to be slowly eaten books; should match with randomized selected sprite from start 
         switch (state)
@@ -69,6 +70,7 @@ public class AC_BookshelfVisual : MonoBehaviour
                 {
                     wormTouchCount = 0;
                     state = State.Half;
+                    Debug.Log("change");
                 }
                 wormTouchCount++;
                 break;
@@ -94,7 +96,6 @@ public class AC_BookshelfVisual : MonoBehaviour
                 }
                 if (wormTouchCount > UnityEngine.Random.Range(3, 6))
                 {
-                    //play crumbs
                     wormTouchCount = 0;
                     state = State.Empty;
                 }

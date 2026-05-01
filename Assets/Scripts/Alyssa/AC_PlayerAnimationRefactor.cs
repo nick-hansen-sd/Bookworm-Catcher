@@ -13,11 +13,14 @@ public class AC_PlayerAnimationRefactor : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         currentAnim = "FacingFront";
+        currentBaseAnim = "FacingFront";
     }
     
 
     private void Update()
     {
+        // Debug.Log(playerRefactor.GetState());
+        
         if (playerRefactor.GetState() == PlayerRefactor.State.Dashing)
         {
             if (0 != playerRefactor.GetMovementX())
@@ -32,7 +35,7 @@ public class AC_PlayerAnimationRefactor : MonoBehaviour
         }
         
         
-        else if(playerRefactor.GetState() == PlayerRefactor.State.Moving || 0 != playerRefactor.GetMovementX())
+        if(playerRefactor.GetState() == PlayerRefactor.State.Moving)
         {        
             // if (player.GetState() != Player.State.SingleJump && player.GetState() != Player.State.DoubleJump)
             // {
