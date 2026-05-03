@@ -79,23 +79,6 @@ public class AC_PlayerAnimationRefactor : MonoBehaviour
     }
 
 
-    // private void SwitchBaseAnimation(string newAnim)
-    // {
-    //     //only resetting the base animations
-    //     if (newAnim != currentAnim)
-    //     {
-    //         animator.SetBool(currentAnim, false);
-    //         animator.SetBool(currentBaseAnim, false);
-
-    //         animator.SetBool(newAnim, true);
-            
-    //         currentAnim = newAnim;
-    //         currentBaseAnim = newAnim;
-    //         // Debug.Log(currentAnim);
-    //     }
-    // }
-
-
     private void SwitchAnimation(string newAnim, string newBaseAnim)
     {
         //when animation changes, set current animations to false and set it to the new ones

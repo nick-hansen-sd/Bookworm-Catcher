@@ -1,19 +1,16 @@
 fileFormatVersion: 2
-guid: e81c02f2eb2bc914a897e3c263197017
+guid: 16f5d87c5d6c29c43a83bb6db32300bc
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 3694474919647854929
-    second: AltWorm-Sheet_0
+      213: -6984570984030678496
+    second: AltWormAttack-Sheet_0
   - first:
-      213: -8844352020021043513
-    second: AltWorm-Sheet_1
+      213: 1031938282536592606
+    second: AltWormAttack-Sheet_1
   - first:
-      213: 8152147820463650122
-    second: AltWorm-Sheet_2
-  - first:
-      213: -3455051378064535353
-    second: AltWorm-Sheet_3
+      213: -4603714941871049857
+    second: AltWormAttack-Sheet_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -135,57 +132,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: AltWorm-Sheet_0
+      name: AltWormAttack-Sheet_0
       rect:
         serializedVersion: 2
-        x: 1
-        y: 37
-        width: 22
-        height: 14
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 15143318d59654330800000000000000
-      internalID: 3694474919647854929
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: AltWorm-Sheet_1
-      rect:
-        serializedVersion: 2
-        x: 36
-        y: 37
-        width: 22
-        height: 14
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 7ce132a72bc824580800000000000000
-      internalID: -8844352020021043513
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: AltWorm-Sheet_2
-      rect:
-        serializedVersion: 2
-        x: 1
+        x: 13
         y: 5
         width: 22
-        height: 11
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -194,20 +147,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a45f533304f322170800000000000000
-      internalID: 8152147820463650122
+      spriteID: 022d95422b1d11f90800000000000000
+      internalID: -6984570984030678496
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: AltWorm-Sheet_3
+      name: AltWormAttack-Sheet_1
       rect:
         serializedVersion: 2
-        x: 36
+        x: 45
         y: 5
         width: 22
-        height: 11
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -216,8 +169,30 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7c05db9c3113d00d0800000000000000
-      internalID: -3455051378064535353
+      spriteID: ed468b8866e225e00800000000000000
+      internalID: 1031938282536592606
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AltWormAttack-Sheet_2
+      rect:
+        serializedVersion: 2
+        x: 77
+        y: 5
+        width: 22
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f733e92e6a15c10c0800000000000000
+      internalID: -4603714941871049857
       vertices: []
       indices: 
       edges: []
@@ -226,7 +201,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e18c11c6c987694fba8e3c02cfaae6e
+    spriteID: f435215193f6bca42a1a9e6d14efd985
     internalID: 0
     vertices: []
     indices: 
@@ -236,10 +211,9 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      AltWorm-Sheet_0: 3694474919647854929
-      AltWorm-Sheet_1: -8844352020021043513
-      AltWorm-Sheet_2: 8152147820463650122
-      AltWorm-Sheet_3: -3455051378064535353
+      AltWormAttack-Sheet_0: -6984570984030678496
+      AltWormAttack-Sheet_1: 1031938282536592606
+      AltWormAttack-Sheet_2: -4603714941871049857
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
