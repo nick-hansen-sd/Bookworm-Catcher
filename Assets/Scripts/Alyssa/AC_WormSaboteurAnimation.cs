@@ -34,17 +34,21 @@ public class AC_WormSaboteurAnimation : MonoBehaviour
         if (wormSaboteur.GetState() == WormAttackLadder.StateMachine.Attack)
             animator.SetBool(IS_ATTACK, true);
         
-        //changes to caught animation when worm is caught 
+        //changes to caught animation when worm is caught
         if (wormSaboteur.GetState() == WormAttackLadder.StateMachine.Caught)
         {
             animator.SetBool(IS_CAUGHT, true);
+            //de-signs up for event notif before worm is destroyed 
             WormAttackLadder.OnFireAttackAnim -= OnFireAttackAnim;
         }
             
 
         //change animation speed when worm gets faster when retreating, resets speed afterwards 
         if (wormSaboteur.GetState() == WormAttackLadder.StateMachine.Retreat)
+        {
+            animator.SetBool(IS_ATTACK, false);
             animator.speed = wormSaboteur.GetSpeedModifier();
+        }
         else
             animator.speed = 1f;
         
@@ -53,6 +57,7 @@ public class AC_WormSaboteurAnimation : MonoBehaviour
 
     public void OnFireAttackAnim(SpriteRenderer spriteRender)
     {
+        //only fires animation for that specific worm 
         if (spriteRender != this.gameObject.GetComponent<SpriteRenderer>())
             return;
         
