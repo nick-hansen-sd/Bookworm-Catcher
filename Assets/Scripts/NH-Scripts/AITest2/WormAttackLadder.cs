@@ -93,7 +93,7 @@ public class WormAttackLadder : MonoBehaviour
         }
 
         // Changes direction when ground ends
-        if (groundInfo.collider == false)
+        if (groundInfo.collider == false && ladderInfo.collider == false)
         {
             ChangeDirectionLeftRight();
         } else if (pathAheadInfo.collider != false)
