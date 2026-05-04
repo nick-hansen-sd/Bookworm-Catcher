@@ -12,10 +12,18 @@ public class AC_PlayerAnimationRefactor : MonoBehaviour
     private string FACING_BACK = "FacingBack";
     private string FACING_LEFT = "FacingLeft";
     private string FACING_RIGHT = "FacingRight";
-    private string WALKING_RIGHT = "WalkingRight";
     private string WALKING_LEFT = "WalkingLeft";
-    private string DASH_RIGHT = "DashRight";
+    private string WALKING_RIGHT = "WalkingRight";
     private string DASH_LEFT = "DashLeft";
+     private string DASH_RIGHT = "DashRight";
+    private string JUMP_FRONT = "JumpFront";
+    private string JUMP_BACK = "JumpBack";
+    private string JUMP_LEFT = "JumpLeft";
+    private string JUMP_RIGHT = "JumpRight";
+    private string FALL_FRONT = "FallFront";
+    private string FALL_BACK = "FallBack";
+    private string FALL_LEFT = "FallLeft";
+    private string FALL_RIGHT = "FallRight";
 
 
     private void Start()
@@ -30,7 +38,7 @@ public class AC_PlayerAnimationRefactor : MonoBehaviour
 
     private void Update()
     {
-        // Debug.Log(playerRefactor.GetState());
+        Debug.Log(playerRefactor.GetState());
         
         if (playerRefactor.GetState() == PlayerRefactor.State.Dashing)
         {
@@ -56,16 +64,69 @@ public class AC_PlayerAnimationRefactor : MonoBehaviour
         }
 
 
-        if (playerRefactor.GetState() == PlayerRefactor.State.Idle || 0 == playerRefactor.GetMovementX())
+        if(playerRefactor.GetState() == PlayerRefactor.State.SingleJump || playerRefactor.GetState() == PlayerRefactor.State.DoubleJump)
         {
-            animator.SetBool(WALKING_RIGHT, false);
-            animator.SetBool(WALKING_LEFT, false);
-            animator.SetBool(DASH_RIGHT, false);
-            animator.SetBool(DASH_LEFT, false);
-            
+            if(GetBaseAnim() == FACING_LEFT || 0 > playerRefactor.GetMovementX())
+            {
+                SwitchAnimation(JUMP_LEFT, FACING_LEFT);
+                AnimateGrounded(FACING_LEFT, FACING_LEFT);
+            }
+                
+            if(GetBaseAnim() == FACING_RIGHT || 0 < playerRefactor.GetMovementX())
+            {
+                SwitchAnimation(JUMP_RIGHT, FACING_RIGHT);
+                AnimateGrounded(FACING_RIGHT, FACING_RIGHT);
+            }
+                
+            if(GetBaseAnim() == FACING_FRONT)
+            {
+                SwitchAnimation(JUMP_FRONT, FACING_FRONT);
+                AnimateGrounded(FACING_FRONT, FACING_FRONT);
+            }
+
+            if (GetBaseAnim() == FACING_BACK)
+            {
+                SwitchAnimation(JUMP_BACK, FACING_BACK);
+                AnimateGrounded(FACING_BACK, FACING_BACK);
+            }
+        }
+
+
+        if(playerRefactor.GetState() == PlayerRefactor.State.Falling)
+        {
+            if(GetBaseAnim() == FACING_LEFT || 0 > playerRefactor.GetMovementX())
+            {
+                SwitchAnimation(FALL_LEFT, FACING_LEFT);
+                AnimateGrounded(FACING_LEFT, FACING_LEFT);
+            }
+                
+            if(GetBaseAnim() == FACING_RIGHT || 0 < playerRefactor.GetMovementX())
+            {
+                SwitchAnimation(FALL_RIGHT, FACING_RIGHT);
+                AnimateGrounded(FACING_RIGHT, FACING_RIGHT);
+            }
+                
+            if(GetBaseAnim() == FACING_FRONT)
+            {
+                SwitchAnimation(FALL_FRONT, FACING_FRONT);
+                AnimateGrounded(FACING_FRONT, FACING_FRONT);
+            }
+
+            if (GetBaseAnim() == FACING_BACK)
+            {
+                SwitchAnimation(FALL_BACK, FACING_BACK);
+                AnimateGrounded(FACING_BACK, FACING_BACK);
+            }
+        }
+
+
+        if (playerRefactor.GetState() == PlayerRefactor.State.Idle && playerRefactor.GetIsGrounded())
+        {
+            SwitchAnimation(currentBaseAnim, currentBaseAnim);
+
             if (Keyboard.current.wKey.wasPressedThisFrame || Keyboard.current.upArrowKey.wasPressedThisFrame )
                 SwitchAnimation(FACING_BACK, FACING_BACK);
-                
+                    
             if (Keyboard.current.sKey.wasPressedThisFrame || Keyboard.current.downArrowKey.wasPressedThisFrame )
                 SwitchAnimation(FACING_FRONT, FACING_FRONT);
                 
@@ -75,6 +136,9 @@ public class AC_PlayerAnimationRefactor : MonoBehaviour
             if (Keyboard.current.dKey.wasPressedThisFrame || Keyboard.current.rightArrowKey.wasPressedThisFrame )
                 SwitchAnimation(FACING_RIGHT, FACING_RIGHT); 
         }
+
+
+       
         
     }
 
@@ -94,6 +158,19 @@ public class AC_PlayerAnimationRefactor : MonoBehaviour
             currentAnim = newAnim;
             currentBaseAnim = newBaseAnim;
         }
+    }
+
+
+    private string GetBaseAnim()
+    {
+        return currentBaseAnim;
+    }
+
+
+    private void AnimateGrounded(string newAnim, string newBaseAnim)
+    {
+        if(playerRefactor.GetIsGrounded())
+            SwitchAnimation(newAnim, newBaseAnim);
     }
 
 }
