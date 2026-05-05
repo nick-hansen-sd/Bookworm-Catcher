@@ -24,6 +24,7 @@ public class AC_PlayerAnimationRefactor : MonoBehaviour
     private string FALL_BACK = "FallBack";
     private string FALL_LEFT = "FallLeft";
     private string FALL_RIGHT = "FallRight";
+    private string CLIMB_BACK = "Climbing";
 
 
     private void Start()
@@ -89,6 +90,13 @@ public class AC_PlayerAnimationRefactor : MonoBehaviour
                 SwitchAnimation(JUMP_BACK, FACING_BACK);
                 AnimateGrounded(FACING_BACK, FACING_BACK);
             }
+        }
+
+
+        if (playerRefactor.GetState() == PlayerRefactor.State.Climbing)
+        {
+            if (0 != playerRefactor.GetMovementY())
+                SwitchAnimation(CLIMB_BACK, FACING_BACK);
         }
 
 
