@@ -1,16 +1,16 @@
 gggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg
-t
-u
-u
-u
-u                               s                      s
-u                       ltxxxxxxxxxxr              lxxxxxxxxxxtr
-u                        u                                    u
-u                        u                                    u
-u                    w   u                                    u
-u                lxxxxxxru                                    u
-u                        u                                    u
-b                        b                     w              b
+
+
+
+
+                               s                      s
+                       ltxxxxxxxxxxr              lxxxxxxxxxxtr
+                        u                                    u
+                        u                                    u
+                    w   u                                    u
+                lxxxxxxru                                    u
+                        u                                    u
+                        b                     w              b
 ffffffffffffffffffffffffffffffffffffffffftffffffffffffffffffffffffffffffffffffffffff
                                          u
                                          u

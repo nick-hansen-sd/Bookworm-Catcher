@@ -1,17 +1,17 @@
 gggggggggggggggggggggggggggggggggggggggggg
-                     t
-                     u
-                     u
-     s               u
-   lxxrt             u
-       u             u
-       u             u          s
-       u             u      tlxxxxxxxxxr
-       u             u      u
-       u             u      u
-       u             u      u
-       b       w     u      u
-tffffffffffffffffffffuffffffffffffffffffff
+                    
+                    
+                     
+     s             
+   lxxrt             
+       u             
+       u                        s
+       u                    tlxxxxxxxxxr
+       u                    u
+       u                    u
+       u                    u
+       b       w            u
+tfffffffffffffffffffftffffffffffffffffffff
 u                    u
 u                    u
 u                    u
