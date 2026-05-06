@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="515b1211-564e-4bf5-9b47-24703bcafae7" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Bookworm-Catcher/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Bookworm-Catcher/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/NC/PlayerRefactor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/NC/PlayerRefactor.cs" afterDir="false" />
-    </list>
+    <list default="true" id="515b1211-564e-4bf5-9b47-24703bcafae7" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -121,7 +118,7 @@
       <workItem from="1777346171143" duration="7493000" />
       <workItem from="1777430536968" duration="958000" />
       <workItem from="1777510739958" duration="2120000" />
-      <workItem from="1777680719357" duration="1134000" />
+      <workItem from="1777680719357" duration="1346000" />
     </task>
     <servers />
   </component>

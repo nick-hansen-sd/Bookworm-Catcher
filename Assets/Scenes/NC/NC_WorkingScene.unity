@@ -2648,7 +2648,7 @@ MonoBehaviour:
   ladderPrefab: {fileID: 4920958026671347910, guid: 1c20a0845e9a961429a07aca72dbace0, type: 3}
   ladderTopPrefab: {fileID: 4920958026671347910, guid: 555783ff179f6174380b8d8e596ca0c0, type: 3}
   ladderBottomPrefab: {fileID: 4920958026671347910, guid: d7cf92186543fb744928ffa7433d5740, type: 3}
-  wormPrefab: {fileID: 3484617489225680856, guid: 1b54abc108f8f9c45a4e2a530645b6af, type: 3}
+  wormPrefab: {fileID: 2379112269403398562, guid: c0e6187fa5762b14084f92b3fb3681a4, type: 3}
   wormCount: 0
 --- !u!4 &902966596
 Transform:
