@@ -153,7 +153,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -244.89001, y: -216.5}
+  m_AnchoredPosition: {x: -206.4, y: -211.1}
   m_SizeDelta: {x: 151.8942, y: 64.4204}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &17533949
@@ -1080,7 +1080,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -286.6, y: 179.04999}
+  m_AnchoredPosition: {x: -201.88, y: 166.5}
   m_SizeDelta: {x: 168.4825, y: 35.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &304903642
@@ -1364,7 +1364,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -244.89001, y: -125}
+  m_AnchoredPosition: {x: -206.4, y: -119.600006}
   m_SizeDelta: {x: 151.8942, y: 64.4204}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &363912787
@@ -1503,7 +1503,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -478, y: 9}
+  m_AnchoredPosition: {x: -439.50998, y: 14.39999}
   m_SizeDelta: {x: 186, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &371919194
@@ -2099,7 +2099,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -478, y: -166.5}
+  m_AnchoredPosition: {x: -439.50998, y: -161.1}
   m_SizeDelta: {x: 186, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &737402996
@@ -2211,9 +2211,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1607293985}
-        m_TargetAssemblyTypeName: OptionsMenu, Assembly-CSharp
-        m_MethodName: 
+      - m_Target: {fileID: 2107531272}
+        m_TargetAssemblyTypeName: MusicManager, Assembly-CSharp
+        m_MethodName: ChangeVolume
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2680,7 +2680,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -478, y: -75}
+  m_AnchoredPosition: {x: -439.50998, y: -69.600006}
   m_SizeDelta: {x: 186, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1058536424
@@ -3094,7 +3094,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -478, y: 93}
+  m_AnchoredPosition: {x: -439.50998, y: 98.399994}
   m_SizeDelta: {x: 186, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1193347135
@@ -3157,7 +3157,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -240.70007, y: -41}
+  m_AnchoredPosition: {x: -206.4, y: -35.6}
   m_SizeDelta: {x: 151.8942, y: 64.4204}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1310270392
@@ -3294,7 +3294,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -16}
+  m_AnchoredPosition: {x: 3.4000244, y: 13.900024}
   m_SizeDelta: {x: 502.6797, y: 279.7716}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1336790059
@@ -4413,9 +4413,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1607293985}
-        m_TargetAssemblyTypeName: OptionsMenu, Assembly-CSharp
-        m_MethodName: 
+      - m_Target: {fileID: 344802534}
+        m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
+        m_MethodName: ChangeVolume
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4670,7 +4670,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -244.89001, y: 43}
+  m_AnchoredPosition: {x: -206.4, y: 48.399994}
   m_SizeDelta: {x: 151.8942, y: 32.9029}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1966365294
