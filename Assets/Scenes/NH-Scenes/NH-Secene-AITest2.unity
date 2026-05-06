@@ -1989,6 +1989,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5221703192962375367, guid: 1b54abc108f8f9c45a4e2a530645b6af, type: 3}
+      propertyPath: attackDelay
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5221703192962375367, guid: 1b54abc108f8f9c45a4e2a530645b6af, type: 3}
       propertyPath: playerGameObject
       value: 
       objectReference: {fileID: 0}
