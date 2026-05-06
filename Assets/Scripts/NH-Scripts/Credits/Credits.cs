@@ -3,9 +3,8 @@ using UnityEngine.SceneManagement;
 
 public class Credits : MonoBehaviour
 {
-    [SerializeField] private float SceneTransitionTimer = 30f;
+    [SerializeField] private float SceneTransitionTimer = 30f; // Timer until credits transitions to main menu
 
-    // Update is called once per frame
     void Update()
     {
         SceneTransitionTimer -= Time.deltaTime;
