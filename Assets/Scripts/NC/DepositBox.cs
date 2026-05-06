@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class DepositBox : MonoBehaviour, IBookwormParent
 {
@@ -8,8 +9,10 @@ public class DepositBox : MonoBehaviour, IBookwormParent
     [SerializeField] private Transform bookwormHoldPoint;
 
     //---------MARI-------------------------
-    //Points per bookworm
-    [SerializeField] private int pointsPerBookworm = 100;
+    [SerializeField] private int pointsPatrolWorm = 100;
+    [SerializeField] private int pointsSabotageWorm = 150;
+    [FormerlySerializedAs("pointsPerBookworm")]
+    [SerializeField] private int pointsPerBookwormFallback = 100;
     //--------------------------------------
 
     private Bookworm _bookworm;
@@ -42,7 +45,7 @@ public class DepositBox : MonoBehaviour, IBookwormParent
                 _hasShownMissingScoreSystemWarning = true;
             }
 
-            scoreSystem?.RegisterCaughtWorm(pointsPerBookworm);
+            scoreSystem?.RegisterCaughtWorm(GetPointsForBookworm(_bookworm));
             //--------------------------------------
     
             OnBookwormDeposited?.Invoke(this, EventArgs.Empty);
@@ -69,4 +72,26 @@ public class DepositBox : MonoBehaviour, IBookwormParent
     {
         return _bookworm != null;
     }
+
+    //---------MARI-------------------------
+    private int GetPointsForBookworm(Bookworm bookworm)
+    {
+        if (bookworm == null)
+        {
+            return pointsPerBookwormFallback;
+        }
+
+        if (bookworm.GetComponent<WormAttackLadder>() != null)
+        {
+            return pointsSabotageWorm;
+        }
+
+        if (bookworm.GetComponent<WormPatrol>() != null)
+        {
+            return pointsPatrolWorm;
+        }
+
+        return pointsPerBookwormFallback;
+    }
+    //--------------------------------------
 }

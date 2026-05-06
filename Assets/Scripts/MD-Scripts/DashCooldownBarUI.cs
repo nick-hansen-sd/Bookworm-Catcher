@@ -1,66 +1,57 @@
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI; // Crucial: This allows us to use the 'Image' type
+using UnityEngine.UI;
 
 public class DashCooldownBarUI : MonoBehaviour
 {
     [SerializeField] private Image fillImage; 
     [SerializeField] private TMP_Text statusText;
-    [SerializeField] private PlayerRefactor playerRefactor;
+    [SerializeField] private PlayerRefactor player;
+
+    [Header("Colors")]
+    [SerializeField] private Color notReadyColor = Color.red;
+    [SerializeField] private Color readyColor = new Color(0.854902f, 0.6470588f, 0.1254902f, 1f); 
 
     private void Update()
     {
-        if (!TryResolvePlayerRefactor())
+        if (!EnsurePlayerReference())
         {
-            ApplyProgress(1f);
+            ApplyUI(1f, "NO PLAYER", isReady: true);
             return;
         }
 
-        UpdateFromPlayer(
-            playerRefactor.IsDashActive(), 
-            playerRefactor.IsDashReady(), 
-            playerRefactor.GetDashDuration(), 
-            playerRefactor.GetDashTimeRemaining(),
-            playerRefactor.GetDashCooldownDuration(), 
-            playerRefactor.GetDashCooldownTimeRemaining()
-        );
-    }
-
-    private bool TryResolvePlayerRefactor()
-    {
-        if (playerRefactor != null) return true;
-
-        playerRefactor = PlayerRefactor.Instance != null ? PlayerRefactor.Instance : FindFirstObjectByType<PlayerRefactor>();
-        return playerRefactor != null;
-    }
-
-    private void UpdateFromPlayer(bool isDashing, bool isDashReady, float dashDuration, float dashTimeRemaining, float cooldownDuration, float cooldownTimeRemaining)
-    {
-        if (isDashing)
+        if (player.IsDashActive())
         {
-            float dashProgress = dashDuration > 0f ? Mathf.Clamp01(dashTimeRemaining / dashDuration) : 0f;
-            ApplyProgress(dashProgress);
-            if (statusText != null)
-            {
-                statusText.text = "DASH " + dashTimeRemaining.ToString("0.0") + "s";
-            }
-            return;
+            float dashProgress = player.GetDashDuration() > 0 ? player.GetDashTimeRemaining() / player.GetDashDuration() : 0;
+            // Yellow while actively dashing.
+            ApplyUI(dashProgress, $"DASH {player.GetDashTimeRemaining():0.0}s", isReady: true);
         }
-
-        float cooldownProgress = cooldownDuration > 0f ? 1f - Mathf.Clamp01(cooldownTimeRemaining / cooldownDuration) : 1f;
-        ApplyProgress(cooldownProgress);
-
-        if (statusText != null)
+        else if (!player.IsDashReady())
         {
-            statusText.text = isDashReady ? "DASH READY" : "CD " + cooldownTimeRemaining.ToString("0.0") + "s";
+            float cdProgress = player.GetDashCooldownDuration() > 0 ? 1f - (player.GetDashCooldownTimeRemaining() / player.GetDashCooldownDuration()) : 1f;
+            // Red while refilling / on cooldown.
+            ApplyUI(cdProgress, $"CD {player.GetDashCooldownTimeRemaining():0.0}s", isReady: false);
+        }
+        else
+        {
+            ApplyUI(1f, "DASH READY", isReady: true);
         }
     }
 
-    private void ApplyProgress(float progress)
+    private bool EnsurePlayerReference()
     {
-        if (fillImage != null)
+        if (player != null) return true;
+        player = PlayerRefactor.Instance != null ? PlayerRefactor.Instance : FindFirstObjectByType<PlayerRefactor>();
+        return player != null;
+    }
+
+    private void ApplyUI(float progress, string text, bool isReady)
+    {
+        if (fillImage)
         {
             fillImage.fillAmount = Mathf.Clamp01(progress);
+            fillImage.color = isReady ? readyColor : notReadyColor;
         }
+        if (statusText) statusText.SetText(text);
     }
 }

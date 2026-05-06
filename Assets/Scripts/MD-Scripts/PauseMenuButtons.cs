@@ -5,7 +5,7 @@ public class PauseMenuButtons : MonoBehaviour
 {
     [SerializeField] private GameObject pauseContainer;
     [SerializeField] private int mainMenuSceneIndex = 0;
-    [SerializeField] private int optionsSceneIndex = 8;
+    [SerializeField] private int optionsSceneIndex = 1;
     [SerializeField] private string pausedSettingsSceneName = "PausedSettingsButton";
 
     public void ResumeGame()
@@ -27,6 +27,7 @@ public class PauseMenuButtons : MonoBehaviour
     public void OpenSettings()
     {
         Time.timeScale = 1f;
+        OptionsMenu.SetReturnGameplaySceneIndex(SceneManager.GetActiveScene().buildIndex);
 
         if (!string.IsNullOrWhiteSpace(pausedSettingsSceneName))
         {

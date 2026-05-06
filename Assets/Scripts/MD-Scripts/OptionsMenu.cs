@@ -6,13 +6,20 @@ using UnityEngine.UI;
 
 public class OptionsMenu : MonoBehaviour
 {
+    private static int s_returnGameplaySceneIndex = -1;
+
     //Moises---------------
     [SerializeField] private Button musicVolumeButton;
     [SerializeField] private Button soundEffectVolumeButton;
     [SerializeField] private TextMeshProUGUI musicVolumeText;
     [SerializeField] private TextMeshProUGUI soundEffectVolumeText;
     [SerializeField] private int mainMenuSceneIndex = 0;
-    [SerializeField] private int gameplaySceneIndex = 3;
+    [SerializeField] private int gameplaySceneIndex = 5;
+
+    public static void SetReturnGameplaySceneIndex(int sceneBuildIndex)
+    {
+        s_returnGameplaySceneIndex = sceneBuildIndex;
+    }
 
     private void Awake()
     {
@@ -72,6 +79,9 @@ public class OptionsMenu : MonoBehaviour
     {
         Time.timeScale = 1f;
         PausedMenu.ReturnToPausedStateOnLoad = true;
-        SceneManager.LoadSceneAsync(gameplaySceneIndex);
+
+        int targetScene = s_returnGameplaySceneIndex >= 0 ? s_returnGameplaySceneIndex : gameplaySceneIndex;
+        s_returnGameplaySceneIndex = -1;
+        SceneManager.LoadSceneAsync(targetScene);
     }
 }
