@@ -17,6 +17,7 @@ public class LevelParser : MonoBehaviour
     public GameObject ladderTopPrefab;
     public GameObject ladderBottomPrefab;
     public GameObject wormPrefab;
+    public GameObject SabotageWormPrefab;
 
     public int wormCount;
     
@@ -124,6 +125,15 @@ public class LevelParser : MonoBehaviour
                 {
                     Vector3 newPostition = new Vector3(columnIndex + 0.5f, row + 0.5f, -0.5f);
                     Transform dirtInstance = Instantiate(wormPrefab, levelRoot).transform;
+                    dirtInstance.position = newPostition;
+                    wormCount++;
+                }
+                
+                // Sabotage Worm Block
+                if (currentChar == 's')
+                {
+                    Vector3 newPostition = new Vector3(columnIndex + 0.5f, row + 0.5f, -0.5f);
+                    Transform dirtInstance = Instantiate(SabotageWormPrefab, levelRoot).transform;
                     dirtInstance.position = newPostition;
                     wormCount++;
                 }

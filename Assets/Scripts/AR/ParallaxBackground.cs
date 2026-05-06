@@ -9,7 +9,7 @@ public class ParallaxBackground : MonoBehaviour
     
     private float spriteWidthInUnits;
 
-    private const int REPEAT_BACKGROUND_TIMES = 5;
+    private const int REPEAT_BACKGROUND_TIMES = 8;
     
     
     void Start()
