@@ -17,8 +17,18 @@ public class GameOverButtons : MonoBehaviour
         SceneManager.LoadSceneAsync(mainMenuSceneIndex);
     }
 
-    public void QuitGame()
+    public void OpenNextLevel()
     {
-        Application.Quit();
+        Time.timeScale = 1f;
+
+        int nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
+        if (nextSceneIndex >= 0 && nextSceneIndex < SceneManager.sceneCountInBuildSettings)
+        {
+            SceneManager.LoadSceneAsync(nextSceneIndex);
+            return;
+        }
+
+        // Fallback: if there is no next scene in build settings, return to menu.
+        SceneManager.LoadSceneAsync(mainMenuSceneIndex);
     }
 }

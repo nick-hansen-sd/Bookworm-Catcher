@@ -39,7 +39,7 @@ public class AC_PlayerAnimationRefactor : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(playerRefactor.GetState());
+        //Debug.Log(playerRefactor.GetState());
         
         if (playerRefactor.GetState() == PlayerRefactor.State.Dashing)
         {

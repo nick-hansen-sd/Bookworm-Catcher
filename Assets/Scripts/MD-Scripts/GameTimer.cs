@@ -4,191 +4,146 @@ using UnityEngine;
 public class GameTimer : MonoBehaviour
 {
     private const string HighScoreKey = "HighScore";
-    private const int PointsPerSecondRemaining = 50;
+    private const int PointsPerSec = 50;
 
     [SerializeField] private float startTimeSeconds = 60f;
     [SerializeField] private TMP_Text timerText;
     [SerializeField] private string timerPrefix = "TIME: ";
 
     [SerializeField] private GameObject gameOverScreen;
+    [SerializeField] private GameObject winTitle;
+    [SerializeField] private GameObject loseTitle;
     [SerializeField] private GameObject[] filledStars;
-    [SerializeField] private GameObject winTitleImage;
-    [SerializeField] private GameObject gameOverTitleImage;
+
     [SerializeField] private TMP_Text gameOverScoreText;
     [SerializeField] private TMP_Text highScoreText;
-    [SerializeField] private string gameOverScorePrefix = "YOUR SCORE: ";
-    [SerializeField] private string highScorePrefix = "HIGH SCORE: ";
 
     private float _timeRemaining;
-    private bool _hasEnded;
+    private bool _isPaused;
+
+    private ScoreSystem Score => ScoreSystem.Instance;
 
     private void Start()
     {
-        // Ensure gameplay starts unpaused when scene loads.
         Time.timeScale = 1f;
-        _timeRemaining = Mathf.Max(0f, startTimeSeconds);
+        _timeRemaining = startTimeSeconds;
 
-        LevelParser levelParser = FindFirstObjectByType<LevelParser>();
-        ScoreSystem scoreSystem = ScoreSystem.Instance != null ? ScoreSystem.Instance : FindFirstObjectByType<ScoreSystem>();
-        if (levelParser != null && scoreSystem != null && levelParser.wormCountGetter() > 0)
-        {
-            scoreSystem.SetWormCount(levelParser.wormCountGetter());
-        }
+        ResolveEndTitles();
+        
+        var parser = FindFirstObjectByType<LevelParser>();
+        if (parser != null && Score != null)
+            Score.SetWormCount(parser.wormCountGetter());
 
-        //Make sure the game over screen is not active
-        if (gameOverScreen != null)
-        {
-            gameOverScreen.SetActive(false);
-        }
-
-        UpdateGameOverScoreText(startingScore: true, finalScore: 0);
+        if (gameOverScreen) gameOverScreen.SetActive(false);
         UpdateTimerText();
     }
 
     private void Update()
     {
-        if (_hasEnded)
-        {
-            return;
-        }
-
-        if (AreAllWormsCaught())
-        {
-            _hasEnded = true;
-            UpdateTimerText();
-            GameOver();
-            return;
-        }
+        if (_isPaused) return;
 
         _timeRemaining -= Time.deltaTime;
-        if (_timeRemaining <= 0f)
-        {
-            _timeRemaining = 0f;
-            _hasEnded = true;
-            UpdateTimerText();
-            GameOver();
-            return;
-        }
+
+        if (Score != null && Score.TotalWormCount > 0 && Score.RemainingWormCount <= 0)
+            EndGame(true);
+        else if (_timeRemaining <= 0)
+            EndGame(HasReachedWinThreshold());
 
         UpdateTimerText();
     }
 
+    private bool HasReachedWinThreshold()
+    {
+        if (Score == null || Score.TotalWormCount <= 0)
+        {
+            return false;
+        }
+
+        // Win if player caught at least half of the worms.
+        return Score.CaughtWormCount * 2 >= Score.TotalWormCount;
+    }
+
     private void UpdateTimerText()
     {
-        if (timerText == null)
-        {
-            return;
-        }
-
-        int wholeSeconds = Mathf.CeilToInt(_timeRemaining);
-        timerText.text = timerPrefix + wholeSeconds;
+        if (timerText) timerText.SetText($"{timerPrefix}{Mathf.CeilToInt(Mathf.Max(0, _timeRemaining))}");
     }
 
-    private bool AreAllWormsCaught()
+    private void EndGame(bool won)
     {
-        ScoreSystem scoreSystem = ScoreSystem.Instance != null ? ScoreSystem.Instance : FindFirstObjectByType<ScoreSystem>();
-        return scoreSystem != null && scoreSystem.GetTotalWormCount() > 0 && scoreSystem.GetRemainingWormCount() <= 0;
-    }
-
-    private void GameOver(){
+        _isPaused = true;
         Time.timeScale = 0f;
-        if (gameOverScreen != null)
-        {
-            gameOverScreen.SetActive(true);
-        }
+        if (gameOverScreen) gameOverScreen.SetActive(true);
 
-        ScoreSystem scoreSystem = ScoreSystem.Instance != null ? ScoreSystem.Instance : FindFirstObjectByType<ScoreSystem>();
-        int caughtWorms = scoreSystem != null ? scoreSystem.GetCaughtWormCount() : 0;
-        int totalWorms = scoreSystem != null ? scoreSystem.GetTotalWormCount() : 0;
+        ResolveEndTitles();
 
-        int scoreBeforeTimeBonus = scoreSystem != null ? scoreSystem.GetScore() : 0;
-        bool caughtAllWorms = totalWorms > 0 && caughtWorms >= totalWorms;
-        int timeBonus = caughtAllWorms ? Mathf.Max(0, Mathf.FloorToInt(_timeRemaining)) * PointsPerSecondRemaining : 0;
-        if (scoreSystem != null && timeBonus > 0)
-        {
-            scoreSystem.AddPoints(timeBonus);
-        }
-
-        int finalScore = scoreBeforeTimeBonus + timeBonus;
-        UpdateGameOverScoreText(startingScore: false, finalScore: finalScore);
-
-        // Reset filled star overlays so only earned stars are shown.
-        if (filledStars != null)
-        {
-            foreach (GameObject star in filledStars)
-            {
-                if (star != null)
-                {
-                    star.SetActive(false);
-                }
-            }
-        }
-
-        bool isWin = totalWorms > 0 && caughtWorms * 2 >= totalWorms;
-
-        if (isWin){
-            // WIN STATE
-            if (winTitleImage != null) winTitleImage.SetActive(true);
-            if (gameOverTitleImage != null) gameOverTitleImage.SetActive(false);
-
-            AwardStar(caughtWorms, totalWorms);
-        }else{
-            // LOSE STATE
-            if (winTitleImage != null) winTitleImage.SetActive(false);
-            if (gameOverTitleImage != null) gameOverTitleImage.SetActive(true);
-        }
+        int finalScore = CalculateFinalScore(won);
+        HandleHighscore(finalScore);
+        UpdateEndUI(won, finalScore);
     }
 
-    private void AwardStar(int caughtWorms, int totalWorms){
-        if (filledStars == null || filledStars.Length == 0)
-        {
-            return;
-        }
-
-        if (totalWorms <= 0)
-        {
-            return;
-        }
-
-        if (filledStars.Length > 0 && filledStars[0] != null && caughtWorms * 2 >= totalWorms)
-        {
-            filledStars[0].SetActive(true);
-        }
-
-        if (filledStars.Length > 1 && filledStars[1] != null && caughtWorms * 4 >= totalWorms * 3)
-        {
-            filledStars[1].SetActive(true);
-        }
-
-        if (filledStars.Length > 2 && filledStars[2] != null && caughtWorms >= totalWorms)
-        {
-            filledStars[2].SetActive(true);
-        }
-    }
-
-    private void UpdateGameOverScoreText(bool startingScore, int finalScore)
+    private int CalculateFinalScore(bool won)
     {
-        int displayedScore = startingScore ? 0 : finalScore;
+        if (Score == null) return 0;
+        
+        int timeBonus = won ? Mathf.FloorToInt(Mathf.Max(0, _timeRemaining)) * PointsPerSec : 0;
+        if (timeBonus > 0) Score.AddPoints(timeBonus);
+        
+        return Score.Score;
+    }
 
-        int savedHighScore = PlayerPrefs.GetInt(HighScoreKey, 0);
-        int updatedHighScore = Mathf.Max(savedHighScore, displayedScore);
+    private void UpdateEndUI(bool won, int finalScore)
+    {
+        if (winTitle) winTitle.SetActive(won);
+        if (loseTitle) loseTitle.SetActive(!won);
 
-        if (!startingScore && updatedHighScore > savedHighScore)
+        gameOverScoreText?.SetText($"YOUR SCORE: {finalScore:D5}");
+        
+        for (int i = 0; i < filledStars.Length; i++)
         {
-            PlayerPrefs.SetInt(HighScoreKey, updatedHighScore);
+            if (filledStars[i] == null) continue;
+            
+            bool earned = i switch {
+                0 => Score.CaughtWormCount * 2 >= Score.TotalWormCount,
+                1 => Score.CaughtWormCount * 4 >= Score.TotalWormCount * 3,
+                2 => Score.CaughtWormCount >= Score.TotalWormCount,
+                _ => false
+            };
+            filledStars[i].SetActive(earned);
+        }
+    }
+
+    private void HandleHighscore(int currentScore)
+    {
+        int high = PlayerPrefs.GetInt(HighScoreKey, 0);
+        if (currentScore > high)
+        {
+            high = currentScore;
+            PlayerPrefs.SetInt(HighScoreKey, high);
             PlayerPrefs.Save();
         }
-
-        if (gameOverScoreText != null)
-        {
-            gameOverScoreText.text = gameOverScorePrefix + displayedScore.ToString("D5");
-        }
-
-        if (highScoreText != null)
-        {
-            highScoreText.text = highScorePrefix + updatedHighScore.ToString("D5");
-        }
+        highScoreText?.SetText($"HIGH SCORE: {high:D5}");
     }
 
-}
+    private void ResolveEndTitles()
+    {
+        if (gameOverScreen == null)
+        {
+            return;
+        }
 
+        if (winTitle == null)
+        {
+            Transform win = gameOverScreen.transform.Find("YouWinTitle");
+            if (win == null) win = gameOverScreen.transform.Find("WinTitle");
+            if (win != null) winTitle = win.gameObject;
+        }
+
+        if (loseTitle == null)
+        {
+            Transform lose = gameOverScreen.transform.Find("GameOverTitle");
+            if (lose == null) lose = gameOverScreen.transform.Find("LoseTitle");
+            if (lose == null) lose = gameOverScreen.transform.Find("TryAgainTitle");
+            if (lose != null) loseTitle = lose.gameObject;
+        }
+    }
+}

@@ -1,0 +1,355 @@
+fileFormatVersion: 2
+guid: e30aa466c09789a41b92c5892d2380d0
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -8461123305627634566
+    second: BackgroundAlts-Sheet_0
+  - first:
+      213: -3995351431278688844
+    second: BackgroundAlts-Sheet_1
+  - first:
+      213: -1696993826922867000
+    second: BackgroundAlts-Sheet_2
+  - first:
+      213: -7630532747686408630
+    second: BackgroundAlts-Sheet_3
+  - first:
+      213: -7544663286257356045
+    second: BackgroundAlts-Sheet_4
+  - first:
+      213: -3930906251788647038
+    second: BackgroundAlts-Sheet_5
+  - first:
+      213: 6542248036399919464
+    second: BackgroundAlts-Sheet_6
+  - first:
+      213: -7186041279172173853
+    second: BackgroundAlts-Sheet_7
+  - first:
+      213: -8480495488981544909
+    second: BackgroundAlts-Sheet_8
+  - first:
+      213: 1231437625680856442
+    second: BackgroundAlts-Sheet_9
+  - first:
+      213: -4533012543951903210
+    second: BackgroundAlts-Sheet_10
+  - first:
+      213: 5093847298014811630
+    second: BackgroundAlts-Sheet_11
+  - first:
+      213: 5339493753850326264
+    second: BackgroundAlts-Sheet_12
+  - first:
+      213: -921174023533461433
+    second: BackgroundAlts-Sheet_13
+  - first:
+      213: -3469606566629295866
+    second: BackgroundAlts-Sheet_14
+  - first:
+      213: -7031493311213528763
+    second: BackgroundAlts-Sheet_15
+  - first:
+      213: -1265401107941790971
+    second: BackgroundAlts-Sheet_16
+  - first:
+      213: -2993911061156335404
+    second: BackgroundAlts-Sheet_17
+  - first:
+      213: 7582437384541951978
+    second: BackgroundAlts-Sheet_18
+  - first:
+      213: -6962034328771203489
+    second: BackgroundAlts-Sheet_19
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: 4
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: BackgroundAlts-Sheet_0
+      rect:
+        serializedVersion: 2
+        x: 60
+        y: 520
+        width: 476
+        height: 240
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a743947be2d049a80800000000000000
+      internalID: -8461123305627634566
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackgroundAlts-Sheet_1
+      rect:
+        serializedVersion: 2
+        x: 716
+        y: 520
+        width: 476
+        height: 240
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4b509c1aa09ad88c0800000000000000
+      internalID: -3995351431278688844
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackgroundAlts-Sheet_2
+      rect:
+        serializedVersion: 2
+        x: 60
+        y: 275
+        width: 476
+        height: 240
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8c65b300b111378e0800000000000000
+      internalID: -1696993826922867000
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackgroundAlts-Sheet_7
+      rect:
+        serializedVersion: 2
+        x: 716
+        y: 275
+        width: 476
+        height: 240
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3ef16a5a78d064c90800000000000000
+      internalID: -7186041279172173853
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackgroundAlts-Sheet_12
+      rect:
+        serializedVersion: 2
+        x: 75
+        y: 8
+        width: 476
+        height: 240
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8fc6aae7741b91a40800000000000000
+      internalID: 5339493753850326264
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackgroundAlts-Sheet_16
+      rect:
+        serializedVersion: 2
+        x: 715
+        y: 8
+        width: 476
+        height: 240
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 50b6ebe8564607ee0800000000000000
+      internalID: -1265401107941790971
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 56f1eba605ad7f9488a4045051105619
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      BackgroundAlts-Sheet_0: -8461123305627634566
+      BackgroundAlts-Sheet_1: -3995351431278688844
+      BackgroundAlts-Sheet_10: -4533012543951903210
+      BackgroundAlts-Sheet_11: 5093847298014811630
+      BackgroundAlts-Sheet_12: 5339493753850326264
+      BackgroundAlts-Sheet_13: -921174023533461433
+      BackgroundAlts-Sheet_14: -3469606566629295866
+      BackgroundAlts-Sheet_15: -7031493311213528763
+      BackgroundAlts-Sheet_16: -1265401107941790971
+      BackgroundAlts-Sheet_17: -2993911061156335404
+      BackgroundAlts-Sheet_18: 7582437384541951978
+      BackgroundAlts-Sheet_19: -6962034328771203489
+      BackgroundAlts-Sheet_2: -1696993826922867000
+      BackgroundAlts-Sheet_3: -7630532747686408630
+      BackgroundAlts-Sheet_4: -7544663286257356045
+      BackgroundAlts-Sheet_5: -3930906251788647038
+      BackgroundAlts-Sheet_6: 6542248036399919464
+      BackgroundAlts-Sheet_7: -7186041279172173853
+      BackgroundAlts-Sheet_8: -8480495488981544909
+      BackgroundAlts-Sheet_9: 1231437625680856442
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
