@@ -33,7 +33,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 2505778055881651797}
-  - {fileID: 6098152394271035594}
+  - {fileID: 7984945075678410896}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &4028389520500338282
@@ -123,7 +123,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2505778055881651797}
   - component: {fileID: 4803669131888355735}
-  - component: {fileID: 8820574358693575558}
   - component: {fileID: 5565972745489509301}
   - component: {fileID: 3380480608100230876}
   - component: {fileID: 5899838421105692044}
@@ -274,6 +273,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 989875ef2552cf747a87ac906490b4a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AC_BookshelfRefactored
+  bookshelfListSO: {fileID: 11400000, guid: f5db60209900aaf4bb0c62d58918a396, type: 2}
+  selectedSprite: {fileID: 1012851691068504752, guid: 1432fe60af88d184bbb7e8b25153fb0c, type: 3}
+  minRange: 0
+  maxRange: 3
+  paperBurst: {fileID: 3474108964977016159}
 --- !u!50 &5899838421105692044
 Rigidbody2D:
   serializedVersion: 5
@@ -301,7 +305,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!1001 &1669795606687576126
+--- !u!1001 &3268639400211716196
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -358,13 +362,13 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 47af159aa87312f479d4ef0e316da32f, type: 3}
---- !u!198 &740358100117984517 stripped
+--- !u!198 &3474108964977016159 stripped
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 2119517041936524603, guid: 47af159aa87312f479d4ef0e316da32f, type: 3}
-  m_PrefabInstance: {fileID: 1669795606687576126}
+  m_PrefabInstance: {fileID: 3268639400211716196}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &6098152394271035594 stripped
+--- !u!4 &7984945075678410896 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4867462156815687924, guid: 47af159aa87312f479d4ef0e316da32f, type: 3}
-  m_PrefabInstance: {fileID: 1669795606687576126}
+  m_PrefabInstance: {fileID: 3268639400211716196}
   m_PrefabAsset: {fileID: 0}

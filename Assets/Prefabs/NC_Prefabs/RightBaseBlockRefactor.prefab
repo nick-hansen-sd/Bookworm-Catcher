@@ -33,7 +33,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 3506099427394850539}
-  - {fileID: 4334778453930539325}
+  - {fileID: 829647386258749765}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &-3220705021067083769
@@ -123,7 +123,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3506099427394850539}
   - component: {fileID: 2057547934007424581}
-  - component: {fileID: 5334177222880364035}
   - component: {fileID: 4126964812189560437}
   - component: {fileID: 3221846057147450973}
   - component: {fileID: 5536601494547133113}
@@ -208,7 +207,7 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!114 &5334177222880364035
+--- !u!114 &4126964812189560437
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -217,9 +216,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 7405013712465551274}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9fb622d73d942574582c5ebc266cab63, type: 3}
+  m_Script: {fileID: 11500000, guid: 989875ef2552cf747a87ac906490b4a7, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::AC_BookshelfVisual
+  m_EditorClassIdentifier: Assembly-CSharp::AC_BookshelfRefactored
   bookshelfListSO: {fileID: 11400000, guid: f5db60209900aaf4bb0c62d58918a396, type: 2}
   selectedSprite: {fileID: 1384659163609542390, guid: 1432fe60af88d184bbb7e8b25153fb0c, type: 3}
   minRange: 4
@@ -301,7 +300,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!1001 &9197626986723023305
+--- !u!1001 &5192594209842878897
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -358,13 +357,13 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 47af159aa87312f479d4ef0e316da32f, type: 3}
---- !u!4 &4334778453930539325 stripped
+--- !u!4 &829647386258749765 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4867462156815687924, guid: 47af159aa87312f479d4ef0e316da32f, type: 3}
-  m_PrefabInstance: {fileID: 9197626986723023305}
+  m_PrefabInstance: {fileID: 5192594209842878897}
   m_PrefabAsset: {fileID: 0}
---- !u!198 &7119769375882575090 stripped
+--- !u!198 &6153541520640982154 stripped
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 2119517041936524603, guid: 47af159aa87312f479d4ef0e316da32f, type: 3}
-  m_PrefabInstance: {fileID: 9197626986723023305}
+  m_PrefabInstance: {fileID: 5192594209842878897}
   m_PrefabAsset: {fileID: 0}
