@@ -369,13 +369,15 @@ MonoBehaviour:
   bookwormHoldPoint: {fileID: 2186065082017284005}
   baseMoveSpeed: 7
   ladderMoveSpeed: 5
-  dropMoveSpeed: 2
+  dropMoveSpeed: 1
   apexHeight: 4
   apexTime: 0.5
   groundLevel: 6
   ceilingLevel: 40
   leftWall: 0.5
   rightWall: 41.5
+  dashDuration: 2
+  dashCooldownDuration: 5
 --- !u!1 &8332108810703377589
 GameObject:
   m_ObjectHideFlags: 0

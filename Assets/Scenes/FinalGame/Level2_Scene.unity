@@ -268,6 +268,10 @@ PrefabInstance:
       propertyPath: gameInput
       value: 
       objectReference: {fileID: 731764292}
+    - target: {fileID: 1458327428207015338, guid: 76a088a1d98eaee44bc7f0ab625acbc6, type: 3}
+      propertyPath: rightWall
+      value: 83.5
+      objectReference: {fileID: 0}
     - target: {fileID: 1670219565864756465, guid: 76a088a1d98eaee44bc7f0ab625acbc6, type: 3}
       propertyPath: playerRefactor
       value: 
@@ -988,7 +992,7 @@ MonoBehaviour:
   offset: {x: 0, y: 3, z: 0}
   smoothFactor: 2
   xMin: 17.8
-  xMax: 24.2
+  xMax: 66.2
   yMin: 14
   yMax: 33
 --- !u!114 &246968669
@@ -2288,7 +2292,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2406f7d2119c4f45b4afb49adb6fec0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ParallaxBackground
-  parallaxFactor: {x: 0.7, y: 0}
+  parallaxFactor: {x: 0.3, y: 0}
 --- !u!212 &690574878
 SpriteRenderer:
   serializedVersion: 2
@@ -3160,7 +3164,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2406f7d2119c4f45b4afb49adb6fec0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ParallaxBackground
-  parallaxFactor: {x: 0.7, y: 0}
+  parallaxFactor: {x: 0.3, y: 0}
 --- !u!212 &1037997464
 SpriteRenderer:
   serializedVersion: 2
@@ -4257,7 +4261,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 180a63362d098774a849e19bae736033, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LevelParser
-  levelFile: {fileID: 4900000, guid: 125acb1a39273ef4d86fc67f48f4bcb6, type: 3}
+  levelFile: {fileID: 4900000, guid: cc34294acca1215489643717c29f76f5, type: 3}
   levelRoot: {fileID: 1374030106}
   basePrefab: {fileID: 4920958026671347910, guid: 9ffda563c37143c4f9176113490264a4, type: 3}
   leftBasePrefab: {fileID: 4920958026671347910, guid: 06a7d72bbb17fb74b8869e262111d2e7, type: 3}
@@ -6000,7 +6004,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2406f7d2119c4f45b4afb49adb6fec0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ParallaxBackground
-  parallaxFactor: {x: 0.7, y: 0}
+  parallaxFactor: {x: 0.3, y: 0}
 --- !u!1 &1986281702
 GameObject:
   m_ObjectHideFlags: 0
