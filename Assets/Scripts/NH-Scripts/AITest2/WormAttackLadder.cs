@@ -7,10 +7,6 @@ public class WormAttackLadder : MonoBehaviour
     This bookworm variant finds ladders and fires projectiles down the ladders to attack players because it is evil and has only malice in its cold heart
     */
 
-    //--------- Alyssa--------------
-    public delegate void OnFireAttackAnimFunc(SpriteRenderer spriteRender);
-    public static event OnFireAttackAnimFunc OnFireAttackAnim;
-    //------------------------------
     
     [SerializeField] private float speed = 5;
     private float obstacleRaycastDistance = 2f;
@@ -32,6 +28,9 @@ public class WormAttackLadder : MonoBehaviour
     [SerializeField] private float retreatTimerMax = 3f;
     [SerializeField] private float retreatSpeedMultiplier = 2f;
     private float retreatTimer;
+    //-----------Alyssa-----------
+    private bool attackNow;
+    //----------------------------
 
     public enum StateMachine
     {
@@ -118,11 +117,14 @@ public class WormAttackLadder : MonoBehaviour
         if (attackTimer > 0f)
         {
             attackTimer -= Time.deltaTime;
+
+            //--------Alyssa--------
+            attackNow = false;
+            //----------------------
         } else
         {
             //------- Alyssa ------
-            SpriteRenderer spriteRender = gameObject.GetComponentInChildren<SpriteRenderer>();
-            OnFireAttackAnim?.Invoke(spriteRender);
+            attackNow = true;
             //---------------------
             
             // Instantiate book projectile at spawn point
@@ -248,6 +250,11 @@ public class WormAttackLadder : MonoBehaviour
     public float GetSpeedModifier()
     {
         return retreatSpeedMultiplier;
+    }
+
+    public bool IsAttackNow()
+    {
+        return attackNow;
     }
     //--------------------
 }
