@@ -117,6 +117,10 @@ public class WormAttackLadder : MonoBehaviour
         if (attackTimer > 0f)
         {
             attackTimer -= Time.deltaTime;
+
+            //--------Alyssa--------
+            attackNow = false;
+            //----------------------
         } else
         {
             //------- Alyssa ------
@@ -130,10 +134,6 @@ public class WormAttackLadder : MonoBehaviour
         }
 
         DetectPlayer();
-
-        //--------Alyssa--------
-        attackNow = false;
-        //----------------------
 
     }
 

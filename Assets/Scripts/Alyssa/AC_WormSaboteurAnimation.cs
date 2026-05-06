@@ -20,7 +20,7 @@ public class AC_WormSaboteurAnimation : MonoBehaviour
 
     private void Update()
     {
-        // Debug.Log("Worm State: " + wormDefault.GetState());
+        Debug.Log("Worm State: " + wormSaboteur.GetState());
         
         //defualt wiggle state of the worm 
         if (wormSaboteur.GetState() == WormAttackLadder.StateMachine.Search)
