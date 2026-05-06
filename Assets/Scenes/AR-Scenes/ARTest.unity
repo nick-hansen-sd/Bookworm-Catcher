@@ -753,7 +753,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2406f7d2119c4f45b4afb49adb6fec0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ParallaxBackground
-  parallaxFactor: {x: 0.7, y: 0}
+  parallaxFactor: {x: 0.3, y: 0}
 --- !u!212 &690574878
 SpriteRenderer:
   serializedVersion: 2
@@ -1365,7 +1365,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2406f7d2119c4f45b4afb49adb6fec0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ParallaxBackground
-  parallaxFactor: {x: 0.7, y: 0}
+  parallaxFactor: {x: 0.3, y: 0}
 --- !u!212 &1037997464
 SpriteRenderer:
   serializedVersion: 2
@@ -2217,7 +2217,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2406f7d2119c4f45b4afb49adb6fec0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ParallaxBackground
-  parallaxFactor: {x: 0.7, y: 0}
+  parallaxFactor: {x: 0.3, y: 0}
 --- !u!1 &2143356474
 GameObject:
   m_ObjectHideFlags: 0
