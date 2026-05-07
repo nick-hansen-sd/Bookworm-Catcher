@@ -72,7 +72,17 @@ public class GameTimer : MonoBehaviour
     {
         _isPaused = true;
         Time.timeScale = 0f;
-        if (gameOverScreen) gameOverScreen.SetActive(true);
+        if (gameOverScreen)
+        {
+            // Keep the game-over UI on top so its buttons receive clicks.
+            Transform gameOverRoot = gameOverScreen.transform.parent;
+            if (gameOverRoot != null)
+            {
+                gameOverRoot.SetAsLastSibling();
+            }
+
+            gameOverScreen.SetActive(true);
+        }
 
         ResolveEndTitles();
 

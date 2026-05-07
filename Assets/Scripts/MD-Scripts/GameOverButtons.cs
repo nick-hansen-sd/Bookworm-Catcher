@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 public class GameOverButtons : MonoBehaviour
 {
     [SerializeField] private int mainMenuSceneIndex = 0;
+    [SerializeField] private int creditsSceneIndex = 8;
 
     public void TryAgain()
     {
@@ -30,5 +31,11 @@ public class GameOverButtons : MonoBehaviour
 
         // Fallback: if there is no next scene in build settings, return to menu.
         SceneManager.LoadSceneAsync(mainMenuSceneIndex);
+    }
+
+    public void OpenCredits()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadSceneAsync(creditsSceneIndex);
     }
 }
