@@ -1486,10 +1486,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SoundManager
   player: {fileID: 549382019}
-  singleJump: {fileID: 8300000, guid: 5e510824a937a13469886f94a22df3d0, type: 3}
-  doubleJump: {fileID: 8300000, guid: d9c7b47db62d90a4ea1723ce56c157fe, type: 3}
+  jumpOne: {fileID: 8300000, guid: 17eb43e7a77ff9f4390a8aa0ae601d7f, type: 3}
+  jumpTwo: {fileID: 8300000, guid: 655c46ad9258dc5428042cbd4bbedfcf, type: 3}
   landing: {fileID: 8300000, guid: c9d4852f9cb351b4a83e89829f4b4894, type: 3}
-  walking: {fileID: 8300000, guid: 99a12b993d760b24d9431ad2308a118f, type: 3}
+  walking: {fileID: 8300000, guid: 850c726258008bc41a710ee1765b9058, type: 3}
 --- !u!82 &1157324389
 AudioSource:
   m_ObjectHideFlags: 0
