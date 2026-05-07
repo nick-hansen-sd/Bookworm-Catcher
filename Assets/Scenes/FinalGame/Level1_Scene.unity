@@ -2673,7 +2673,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c699361538a24d14b8ff478f083ec6ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MusicManager
-  musicClip: {fileID: 8300000, guid: 66dbe65796d0bd34b9e274e20a048408, type: 3}
+  musicClip: {fileID: 8300000, guid: e83a98298214522408359ff3301c090e, type: 3}
 --- !u!82 &2018570234
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3111,7 +3111,7 @@ PrefabInstance:
       objectReference: {fileID: 1818209834}
     - target: {fileID: 1690219543600406640, guid: 16fb3090318b31d4ab9a279f4711e450, type: 3}
       propertyPath: startTimeSeconds
-      value: 60
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 1956357362627791473, guid: 16fb3090318b31d4ab9a279f4711e450, type: 3}
       propertyPath: m_Layer

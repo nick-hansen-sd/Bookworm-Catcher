@@ -151,7 +151,7 @@ PrefabInstance:
       objectReference: {fileID: 549382019}
     - target: {fileID: 2746153665422607754, guid: 76a088a1d98eaee44bc7f0ab625acbc6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 12
+      value: 20.35
       objectReference: {fileID: 0}
     - target: {fileID: 2746153665422607754, guid: 76a088a1d98eaee44bc7f0ab625acbc6, type: 3}
       propertyPath: m_LocalPosition.y
@@ -404,7 +404,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8671069642866240918, guid: 89059d36eb0bb66459250cae802f4d90, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 10
+      value: 22.8
       objectReference: {fileID: 0}
     - target: {fileID: 8671069642866240918, guid: 89059d36eb0bb66459250cae802f4d90, type: 3}
       propertyPath: m_LocalPosition.y
@@ -536,7 +536,7 @@ Transform:
   m_GameObject: {fileID: 246968663}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 18, y: 12, z: -10}
+  m_LocalPosition: {x: 20.33, y: 12, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3279,6 +3279,10 @@ PrefabInstance:
       propertyPath: timerText
       value: 
       objectReference: {fileID: 1818209834}
+    - target: {fileID: 1690219543600406640, guid: 16fb3090318b31d4ab9a279f4711e450, type: 3}
+      propertyPath: startTimeSeconds
+      value: 120
+      objectReference: {fileID: 0}
     - target: {fileID: 2333944730931130080, guid: 16fb3090318b31d4ab9a279f4711e450, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -3573,7 +3577,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c699361538a24d14b8ff478f083ec6ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MusicManager
-  musicClip: {fileID: 8300000, guid: 66dbe65796d0bd34b9e274e20a048408, type: 3}
+  musicClip: {fileID: 8300000, guid: e83a98298214522408359ff3301c090e, type: 3}
 --- !u!82 &2018570234
 AudioSource:
   m_ObjectHideFlags: 0
