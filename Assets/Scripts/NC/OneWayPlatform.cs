@@ -33,7 +33,7 @@ public class OneWayPlatform : MonoBehaviour
         BoxCollider2D platformCollider = _currentOneWayPlatform.GetComponent<BoxCollider2D>();
 
         Physics2D.IgnoreCollision(_playerCollider, platformCollider);
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.1f);
         Physics2D.IgnoreCollision(_playerCollider, platformCollider, false);
         _player.SetIsDropping(false);
     }

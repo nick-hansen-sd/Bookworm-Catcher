@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 163354178579842271}
   - component: {fileID: 4512466673235092723}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -101,7 +101,7 @@ GameObject:
   m_Component:
   - component: {fileID: 604978677178985957}
   - component: {fileID: 9104981528950769962}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -197,9 +197,9 @@ GameObject:
   - component: {fileID: 1670219565864756465}
   - component: {fileID: 3033402584958927883}
   - component: {fileID: 1458327428207015338}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PlayerRefactor
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -389,7 +389,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6809651087483157207}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PlayerVisual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -424,7 +424,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3936996673166043372}
   - component: {fileID: 2818357444778193229}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -514,7 +514,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2186065082017284005}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: BookwormHoldPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -547,7 +547,7 @@ GameObject:
   - component: {fileID: 3394665255758316897}
   - component: {fileID: 2771130424890946904}
   - component: {fileID: 2455299019766099343}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Trail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -713,6 +713,10 @@ PrefabInstance:
     - target: {fileID: 3055150646399003716, guid: ed85b931a505b234d982d241ab641ad0, type: 3}
       propertyPath: m_Name
       value: Dust
+      objectReference: {fileID: 0}
+    - target: {fileID: 3055150646399003716, guid: ed85b931a505b234d982d241ab641ad0, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3183279449641515911, guid: ed85b931a505b234d982d241ab641ad0, type: 3}
       propertyPath: m_LocalPosition.x
