@@ -35,6 +35,7 @@ public class GameOverButtons : MonoBehaviour
 
     public void OpenCredits()
     {
+        Time.timeScale = 1f;
         SceneManager.LoadSceneAsync(creditsSceneIndex);
     }
 }
