@@ -8,8 +8,8 @@ public class SoundManager : MonoBehaviour
 
     public static SoundManager Instance { get; private set; }
     [SerializeField] private PlayerRefactor player;
-    [SerializeField] private AudioClip singleJump;
-    [SerializeField] private AudioClip doubleJump;
+    [SerializeField] private AudioClip jumpOne;
+    [SerializeField] private AudioClip jumpTwo;
     [SerializeField] private AudioClip landing;
     [SerializeField] private AudioClip walking;
     private AudioSource _audioSource;
@@ -23,6 +23,7 @@ public class SoundManager : MonoBehaviour
         _audioSource = GetComponent<AudioSource>();
         volume = PlayerPrefs.GetFloat(PLAYER_PREFS_SOUND_EFFECTS_VOLUME, 0.5f);
         _audioSource.volume = volume;
+        
     }
 
     private void Start()
@@ -59,17 +60,17 @@ public class SoundManager : MonoBehaviour
 
     private void Player_LandingActivated(object sender, EventArgs e)
     {
-       // _audioSource.PlayOneShot(landing);
+        //_audioSource.PlayOneShot(landing);
     }
 
     private void Player_DoubleJumpActivated(object sender, EventArgs e)
     {
-        //_audioSource.PlayOneShot(doubleJump);
+        PlayRandomJumpSound();
     }
 
     private void Player_SingleJumpActivated(object sender, EventArgs e)
     {
-        //_audioSource.PlayOneShot(singleJump);
+        PlayRandomJumpSound();
     }
 
     public void ChangeVolume()
@@ -87,5 +88,11 @@ public class SoundManager : MonoBehaviour
     public float GetVolume()
     {
         return volume;
+    }
+
+    private void PlayRandomJumpSound()
+    {   AudioClip[] jumpClips = {jumpOne, jumpTwo};
+        int i = UnityEngine.Random.Range(0, jumpClips.Length);
+        _audioSource.PlayOneShot(jumpClips[i]);
     }
 }
