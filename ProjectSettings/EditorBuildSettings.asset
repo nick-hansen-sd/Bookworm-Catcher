@@ -44,6 +44,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/FinalGame/Level3_Scene.unity
     guid: e3b641326bfeecb44b461a34d1ff2796
+  - enabled: 1
+    path: Assets/Scenes/NH-Scenes/Credits.unity
+    guid: 324a17e51f859094d82cd419d4be76c0
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0
