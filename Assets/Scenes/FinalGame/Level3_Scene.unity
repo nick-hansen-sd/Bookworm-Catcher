@@ -3331,7 +3331,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c699361538a24d14b8ff478f083ec6ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MusicManager
-  musicClip: {fileID: 8300000, guid: e83a98298214522408359ff3301c090e, type: 3}
+  musicClip: {fileID: 8300000, guid: 66dbe65796d0bd34b9e274e20a048408, type: 3}
 --- !u!82 &2018570234
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3343,7 +3343,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: e83a98298214522408359ff3301c090e, type: 3}
+  m_Resource: {fileID: 8300000, guid: 66dbe65796d0bd34b9e274e20a048408, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
