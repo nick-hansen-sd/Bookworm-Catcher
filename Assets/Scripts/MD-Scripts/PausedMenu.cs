@@ -55,6 +55,9 @@ public class PausedMenu : MonoBehaviour
 
             pauseContainer.SetActive(shouldPause);
             Time.timeScale = shouldPause ? 0f : 1f;
+
+            //Stops music from playing when in paused state
+            AudioListener.pause = shouldPause;
         }
     }
 

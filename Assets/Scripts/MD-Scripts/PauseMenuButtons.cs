@@ -16,19 +16,29 @@ public class PauseMenuButtons : MonoBehaviour
         }
 
         Time.timeScale = 1f;
+
+        //Moises
+        AudioListener.pause = false;
     }
 
     public void OpenMainMenu()
     {
         Time.timeScale = 1f;
         SceneManager.LoadSceneAsync(mainMenuSceneIndex);
+
+        //Moises
+        AudioListener.pause = false;
     }
 
     public void OpenSettings()
     {
+
         Time.timeScale = 1f;
         OptionsMenu.SetReturnGameplaySceneIndex(SceneManager.GetActiveScene().buildIndex);
 
+         //Moises
+        AudioListener.pause = false;
+        
         if (!string.IsNullOrWhiteSpace(pausedSettingsSceneName))
         {
             SceneManager.LoadSceneAsync(pausedSettingsSceneName);
