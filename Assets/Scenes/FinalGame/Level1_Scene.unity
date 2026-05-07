@@ -2957,7 +2957,7 @@ PrefabInstance:
       objectReference: {fileID: 1818209834}
     - target: {fileID: 1690219543600406640, guid: 16fb3090318b31d4ab9a279f4711e450, type: 3}
       propertyPath: startTimeSeconds
-      value: 1
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 1956357362627791473, guid: 16fb3090318b31d4ab9a279f4711e450, type: 3}
       propertyPath: m_Layer
